@@ -1,2 +1,4 @@
-package agencia;public class Agencia {
+package agencia;
+
+public class Agencia {
 }
