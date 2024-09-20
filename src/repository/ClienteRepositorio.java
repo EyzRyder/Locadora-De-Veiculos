@@ -2,6 +2,7 @@ package repository;
 
 import entities.cliente.Cliente;
 import exception.InstanciaInvalidaException;
+import exception.ObjetoNaoEncontradoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +26,8 @@ public class ClienteRepositorio extends Repositorio {
     }
 
     @Override
-    public Cliente add(Object object) throws InstanciaInvalidaException {
-        if (object instanceof Cliente cliente) {
+    public Cliente add(Object objeto) throws InstanciaInvalidaException {
+        if (objeto instanceof Cliente cliente) {
             clientes.add(cliente);
             return cliente;
         }
@@ -34,8 +35,14 @@ public class ClienteRepositorio extends Repositorio {
     }
 
     @Override
-    public Object delete(Object id) {
-        return null;
+    public Cliente delete(Object objeto) throws InstanciaInvalidaException, ObjetoNaoEncontradoException {
+        if (objeto instanceof Cliente cliente) {
+            if (!clientes.remove(cliente)) {
+                throw new ObjetoNaoEncontradoException();
+            }
+            return cliente;
+        }
+        throw new InstanciaInvalidaException("Instancia invalida, necessário um cliente.");
     }
 
 }
