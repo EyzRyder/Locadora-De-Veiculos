@@ -11,7 +11,7 @@ public class AgenciaRepositorio extends Repositorio {
     private final List<Agencia> agencias;
 
     public AgenciaRepositorio() {
-        this.agencias = new ArrayList<Agencia>();
+        this.agencias = new ArrayList<>();
     }
 
     @Override
