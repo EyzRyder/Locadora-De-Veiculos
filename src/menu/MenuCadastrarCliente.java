@@ -7,25 +7,25 @@ public class MenuCadastrarCliente extends Menu {
 
     @Override
     public void exibirMenu() {
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int escolha = -1;
 
         do {
             try {
-                System.out.println("╔══════════════════════════════════════════════╗");
-                System.out.println("║              Cadastrar Cliente               ║");
-                System.out.println("╠══════════════════════════════════════════════╣");
-                System.out.println("║  [1] ⇨ Cliente PJ                            ║");
-                System.out.println("║  [2] ⇨ Cliente PF                            ║");
-                System.out.println("║  [0] ⇨ Sair                                  ║");
-                System.out.println("╚══════════════════════════════════════════════╝");
-                System.out.println("╔══════════════════════════════════════════════╗");
-                System.out.println("║         Selecione a tarefa desejada...       ║");
-                System.out.println("╚══════════════════════════════════════════════╝");
-                System.out.print(">>> Input: ");
+                String menu = """
+                        ╔══════════════════════════════════════════════╗
+                        ║              Cadastrar Cliente               ║
+                        ╠══════════════════════════════════════════════╣
+                        ║  [1] ⇨ Cliente PJ                            ║
+                        ║  [2] ⇨ Cliente PF                            ║
+                        ║  [0] ⇨ Sair                                  ║
+                        ╚══════════════════════════════════════════════╝
+                        ╔══════════════════════════════════════════════╗
+                        ║         Selecione a tarefa desejada...       ║
+                        ╚══════════════════════════════════════════════╝
+                        """;
 
-                escolha = input.nextInt();
-                input.nextLine();
+                escolha = Input.getInt(menu, scanner);
 
                 switch (escolha) {
                     case 1:
@@ -39,11 +39,11 @@ public class MenuCadastrarCliente extends Menu {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Erro: Entrada inválida. Por favor, insira um número.");
-                input.nextLine();
+                scanner.nextLine();
             }
         } while (escolha != 0);
 
-        input.close();
+        scanner.close();
     }
 }
 

@@ -7,26 +7,27 @@ public class MenuCadastrarAgencia extends Menu {
 
     @Override
     public void exibirMenu() {
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int escolha = -1;
 
         do {
             try {
-                System.out.println("╔══════════════════════════════════════════════╗");
-                System.out.println("║              Cadastrar Agencia               ║");
-                System.out.println("╠══════════════════════════════════════════════╣");
-                System.out.println("║  [1] ⇨ Pequeno Porte                         ║");
-                System.out.println("║  [2] ⇨ Medio Porte                           ║");
-                System.out.println("║  [2] ⇨ Grande Porte                          ║");
-                System.out.println("║  [0] ⇨ Sair                                  ║");
-                System.out.println("╚══════════════════════════════════════════════╝");
-                System.out.println("╔══════════════════════════════════════════════╗");
-                System.out.println("║         Selecione a tarefa desejada...       ║");
-                System.out.println("╚══════════════════════════════════════════════╝");
-                System.out.print(">>> Input: ");
+                String menu = """
+                        ╔══════════════════════════════════════════════╗
+                        ║              Cadastrar Agencia               ║
+                        ╠══════════════════════════════════════════════╣
+                        ║  [1] ⇨ Pequeno Porte                         ║
+                        ║  [2] ⇨ Medio Porte                           ║
+                        ║  [2] ⇨ Grande Porte                          ║
+                        ║  [0] ⇨ Sair                                  ║
+                        ╚══════════════════════════════════════════════╝
+                        ╔══════════════════════════════════════════════╗
+                        ║         Selecione a tarefa desejada...       ║
+                        ╚══════════════════════════════════════════════╝
+                        """;
 
-                escolha = input.nextInt();
-                input.nextLine();
+                escolha = Input.getInt(menu, scanner);
+
 
                 switch (escolha) {
                     case 1:
@@ -41,11 +42,11 @@ public class MenuCadastrarAgencia extends Menu {
                         System.out.println("Opção inválida.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Erro: Entrada inválida. Por favor, insira um número.");
-                input.nextLine();
+                System.err.println("Erro: Entrada inválida. Por favor, insira um número.");
+                scanner.nextLine();
             }
         } while (escolha != 0);
 
-        input.close();
+        scanner.close();
     }
 }
