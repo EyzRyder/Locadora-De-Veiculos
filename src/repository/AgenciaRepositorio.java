@@ -2,6 +2,7 @@ package repository;
 
 import entities.agencia.Agencia;
 import exception.InstanciaInvalidaException;
+import exception.ObjetoNaoEncontradoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +35,14 @@ public class AgenciaRepositorio extends Repositorio {
     }
 
     @Override
-    public Agencia delete(Object id) {
-        return null;
+    public Agencia delete(Object objeto) throws InstanciaInvalidaException, ObjetoNaoEncontradoException {
+        if (objeto instanceof Agencia agencia) {
+            if(!agencias.remove(agencia)) {
+                throw new ObjetoNaoEncontradoException();
+            }
+            return agencia;
+        }
+        throw new InstanciaInvalidaException("Instancia invalida, necessário uma agencia.");
     }
 
 }
