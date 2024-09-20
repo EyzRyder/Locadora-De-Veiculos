@@ -26,8 +26,8 @@ public class VeiculoRepositorio extends Repositorio {
     }
 
     @Override
-    public Veiculo add(Object object) throws InstanciaInvalidaException {
-        if (object instanceof Veiculo veiculo) {
+    public Veiculo add(Object objeto) throws InstanciaInvalidaException {
+        if (objeto instanceof Veiculo veiculo) {
             veiculos.add(veiculo);
             return veiculo;
         }
@@ -35,8 +35,8 @@ public class VeiculoRepositorio extends Repositorio {
     }
 
     @Override
-    public Veiculo delete(Object object) throws ObjetoNaoEncontradoException, InstanciaInvalidaException {
-        if (object instanceof Veiculo veiculo) {
+    public Veiculo delete(Object objeto) throws ObjetoNaoEncontradoException, InstanciaInvalidaException {
+        if (objeto instanceof Veiculo veiculo) {
             if (!veiculos.remove(veiculo)) {
                 throw new ObjetoNaoEncontradoException();
             }
