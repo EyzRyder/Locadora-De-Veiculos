@@ -1,4 +1,4 @@
-package cliente;
+package entities.cliente;
 
 public class ClientePJ extends Cliente{
     public ClientePJ(String nome, String cpf, String telefone, String email){

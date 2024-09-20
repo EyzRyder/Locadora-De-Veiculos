@@ -1,4 +1,4 @@
-package agencia;
+package entities.agencia;
 
 public class Agencia {
 }

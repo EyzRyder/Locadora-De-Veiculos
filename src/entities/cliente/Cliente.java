@@ -1,4 +1,4 @@
-package cliente;
+package entities.cliente;
 
 public class Cliente {
     private String nome;

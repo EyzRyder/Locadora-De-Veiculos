@@ -1,4 +1,4 @@
-package veiculo;
+package entities.veiculo;
 
 public class Veiculo {
 
