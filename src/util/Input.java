@@ -71,7 +71,7 @@ public class Input {
         System.out.println();
         System.out.println(promptMessage);
 
-        while (value == null) {
+        while (value == null || value.isEmpty()) {
             try {
                 value = scanner.nextLine();
                 System.out.println();

@@ -18,7 +18,8 @@ public class MenuAdmin  {
                     ║                 MENU ADMIN                   ║
                     ╠══════════════════════════════════════════════╣
                     ║  [1] ⇨ Cadastrar Cliente                     ║
-                    ║  [2] ⇨ Cadastrar Agencia                     ║
+                    ║  [2] ⇨ Alterar dados do Cliente              ║
+                    ║  [3] ⇨ Cadastrar Agencia                     ║
                     ║  [0] ⇨ Sair                                  ║
                     ╚══════════════════════════════════════════════╝
                     ╔══════════════════════════════════════════════╗
@@ -28,11 +29,12 @@ public class MenuAdmin  {
 
             escolha = Input.getInt(menu, scanner);
 
-
             switch (escolha) {
                 case 1:
-                    break;
+                    return ModoExibir.CADASTRARCLIENTE;
                 case 2:
+                    return ModoExibir.ALTERARCLIENTE;
+                case 3:
                     break;
                 case 0:
                     return ModoExibir.PRINCIPAL;
