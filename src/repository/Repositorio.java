@@ -3,11 +3,19 @@ package repository;
 import exception.InstanciaInvalidaException;
 import exception.ObjetoNaoEncontradoException;
 
-public abstract class Repositorio {
+import java.util.List;
+import java.util.Map;
 
-    public abstract Object getOne();
-    public abstract Object getAll();
-    public abstract Object add(Object item) throws InstanciaInvalidaException;
-    public abstract Object delete(Object id) throws ObjetoNaoEncontradoException, InstanciaInvalidaException;
+public interface Repositorio<T> {
+
+    T[] getAll();
+
+    T find(String key);
+
+    T update(String key, T item);
+
+    T add(T item);
+
+    T delete(T item) throws ObjetoNaoEncontradoException;
 
 }

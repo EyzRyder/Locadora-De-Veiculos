@@ -1,13 +1,15 @@
 package util.menu;
 
+import controllers.PrincipalController;
+import controllers.RepositorioController;
 import util.Input;
 import util.ModoExibir;
 
 import java.util.Scanner;
 
-public class MenuPrincipal  {
+public class MenuPrincipal {
 
-    public static ModoExibir exibirMenu(ModoExibir modo) {
+    public static ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
 
@@ -17,7 +19,6 @@ public class MenuPrincipal  {
                     ║                MENU PRINCIPAL                ║
                     ╠══════════════════════════════════════════════╣
                     ║  [1] ⇨ Fazer Login                           ║
-                    ║  [2] ⇨ Cadastrar Conta                       ║
                     ║  [0] ⇨ Sair                                  ║
                     ╚══════════════════════════════════════════════╝
                     ╔══════════════════════════════════════════════╗
@@ -29,9 +30,7 @@ public class MenuPrincipal  {
 
             switch (escolha) {
                 case 1:
-                     return ModoExibir.ADMIN;
-                case 2:
-                    break;
+                    return PrincipalController.login(repositorioController);
                 case 0:
                     return ModoExibir.EXIT;
                 default:

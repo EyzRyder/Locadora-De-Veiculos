@@ -1,48 +1,49 @@
 package repository;
 
 import entities.veiculo.Veiculo;
-import exception.InstanciaInvalidaException;
 import exception.ObjetoNaoEncontradoException;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class VeiculoRepositorio extends Repositorio {
+public class VeiculoRepositorio implements Repositorio<Veiculo> {
 
-    private final List<Veiculo> veiculos;
+    private final Map<String, Veiculo> veiculos;
 
     public VeiculoRepositorio() {
-        veiculos = new ArrayList<>();
+        veiculos = new HashMap<>();
     }
 
     @Override
-    public Veiculo getOne() {
-        return veiculos.getFirst();
+    public Veiculo[] getAll() {
+        return veiculos.values().toArray(new Veiculo[veiculos.size()]);
     }
 
     @Override
-    public List<Veiculo> getAll() {
-        return veiculos;
+    public Veiculo find(String placa) {
+        return veiculos.get(placa);
     }
 
     @Override
-    public Veiculo add(Object objeto) throws InstanciaInvalidaException {
-        if (objeto instanceof Veiculo veiculo) {
-            veiculos.add(veiculo);
-            return veiculo;
+    public Veiculo update(String placa,Veiculo veiculo) {
+        return veiculos.put(placa,veiculo);
+    }
+
+    @Override
+    public Veiculo add(Veiculo veiculo)   {
+        return veiculos.put(veiculo.getPlaca(),veiculo);
+
+    }
+
+    @Override
+    public Veiculo delete(Veiculo veiculo) throws ObjetoNaoEncontradoException {
+        Veiculo veiculoRemovido;
+        if (!veiculos.containsKey(veiculo.getPlaca())) {
+            throw new ObjetoNaoEncontradoException();
         }
-        throw new InstanciaInvalidaException("Instancia invalida, necessário um veiculo.");
-    }
-
-    @Override
-    public Veiculo delete(Object objeto) throws ObjetoNaoEncontradoException, InstanciaInvalidaException {
-        if (objeto instanceof Veiculo veiculo) {
-            if (!veiculos.remove(veiculo)) {
-                throw new ObjetoNaoEncontradoException();
-            }
-            return veiculo;
-        }
-        throw new InstanciaInvalidaException("Instancia invalida, necessário um veiculo.");
+        veiculoRemovido = veiculos.remove(veiculo.getPlaca());
+        return veiculoRemovido;
     }
 
 }

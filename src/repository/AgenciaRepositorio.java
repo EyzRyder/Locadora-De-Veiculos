@@ -7,7 +7,7 @@ import exception.ObjetoNaoEncontradoException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AgenciaRepositorio extends Repositorio {
+public class AgenciaRepositorio implements Repositorio<Agencia> {
 
     private final List<Agencia> agencias;
 
@@ -16,33 +16,37 @@ public class AgenciaRepositorio extends Repositorio {
     }
 
     @Override
-    public Agencia getOne() {
-        return agencias.getFirst();
+    public Agencia[] getAll() {
+        return agencias.toArray(new Agencia[agencias.size()]);
     }
 
     @Override
-    public List<Agencia> getAll() {
-        return agencias;
+    public Agencia find(String key) {
+        // TODO add try catch
+        int index = Integer.parseInt(key);
+        return agencias.get(index);
     }
 
     @Override
-    public Agencia add(Object objeto) throws InstanciaInvalidaException {
-        if (objeto instanceof Agencia agencia) {
-            agencias.add(agencia);
-            return agencia;
+    public Agencia update(String key, Agencia agencia) {
+        // TODO add try catch
+        int index = Integer.parseInt(key);
+        agencias.set(index, agencia);
+        return agencia;
+    }
+
+    @Override
+    public Agencia add(Agencia agencia) {
+        agencias.add(agencia);
+        return agencia;
+    }
+
+    @Override
+    public Agencia delete(Agencia agencia) throws ObjetoNaoEncontradoException {
+        if (!agencias.remove(agencia)) {
+            throw new ObjetoNaoEncontradoException();
         }
-        throw new InstanciaInvalidaException("Instancia invalida, necessário uma agencia.");
-    }
-
-    @Override
-    public Agencia delete(Object objeto) throws InstanciaInvalidaException, ObjetoNaoEncontradoException {
-        if (objeto instanceof Agencia agencia) {
-            if(!agencias.remove(agencia)) {
-                throw new ObjetoNaoEncontradoException();
-            }
-            return agencia;
-        }
-        throw new InstanciaInvalidaException("Instancia invalida, necessário uma agencia.");
+        return agencia;
     }
 
 }

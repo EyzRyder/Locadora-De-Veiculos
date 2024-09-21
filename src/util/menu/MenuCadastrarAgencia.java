@@ -1,5 +1,6 @@
 package util.menu;
 
+import controllers.RepositorioController;
 import util.Input;
 import util.ModoExibir;
 
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 public class MenuCadastrarAgencia {
 
-    public static ModoExibir exibirMenu(ModoExibir modo) {
+    public static ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
 

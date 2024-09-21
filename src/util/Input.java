@@ -42,6 +42,29 @@ public class Input {
         return value;
     }
 
+    public static boolean getBoolen(String promptMessage, Scanner scanner) {
+        String input = null;
+        Boolean value = null;
+        System.out.println();
+        System.out.println(promptMessage);
+
+        while (value == null) {
+            try {
+                System.out.print(">> Input(S/N): ");
+                input = scanner.nextLine();
+
+                if(input.equalsIgnoreCase("S")){ value=true; }
+                else if(input.equalsIgnoreCase("N")){value=false;}
+                else { throw new RuntimeException("Por favor digite S pra sim ou N pra não.");}
+                System.out.println();
+            } catch (RuntimeException ex) {
+                System.err.println("Input Invalid! "+ex);
+                scanner.nextLine();
+            }
+        }
+
+        return value;
+    }
 
     public static String getString(String promptMessage, Scanner scanner) {
         String value = null;
@@ -53,7 +76,7 @@ public class Input {
                 value = scanner.nextLine();
                 System.out.println();
                 if (value.isEmpty()) {
-                    throw new RuntimeException();
+                    throw new RuntimeException("Valor Esta vazio");
                 }
             } catch (RuntimeException ex) {
                 System.err.println("Input Invalid! " + ex.getMessage());
