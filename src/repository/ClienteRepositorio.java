@@ -25,6 +25,7 @@ public class ClienteRepositorio implements Repositorio<Cliente> {
 
     @Override
     public Cliente find(String email) {
+        email = email.toLowerCase();
         if (!clientes.containsKey(email)) {
             return null;
         }

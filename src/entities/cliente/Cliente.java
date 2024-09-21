@@ -9,7 +9,7 @@ public class Cliente {
     public Cliente(String nome, String telefone, String email, String senha) {
         this.nome = nome;
         this.telefone = telefone;
-        this.email = email;
+        this.email = email.toLowerCase();
         this.senha = senha;
     }
 
@@ -32,7 +32,6 @@ public class Cliente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
 
     public boolean verificarSenha(String senha) {
         return this.senha.equals(senha);
