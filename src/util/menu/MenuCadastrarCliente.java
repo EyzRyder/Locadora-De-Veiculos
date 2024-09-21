@@ -1,6 +1,8 @@
 package util.menu;
 
+import controllers.ClienteController;
 import controllers.RepositorioController;
+import entities.cliente.TipoCliente;
 import util.Input;
 import util.ModoExibir;
 
@@ -19,6 +21,7 @@ public class MenuCadastrarCliente  {
                     ╠══════════════════════════════════════════════╣
                     ║  [1] ⇨ Cliente PJ                            ║
                     ║  [2] ⇨ Cliente PF                            ║
+                    ║  [3] ⇨ Admin                                 ║
                     ║  [0] ⇨ Sair                                  ║
                     ╚══════════════════════════════════════════════╝
                     ╔══════════════════════════════════════════════╗
@@ -30,11 +33,13 @@ public class MenuCadastrarCliente  {
 
             switch (escolha) {
                 case 1:
-                    break;
+                    return ClienteController.cadastrarCliente(repositorioController, TipoCliente.CLIENTEPF);
                 case 2:
-                    break;
+                    return ClienteController.cadastrarCliente(repositorioController, TipoCliente.CLIENTEPJ);
+                case 3:
+                    return ClienteController.cadastrarCliente(repositorioController, TipoCliente.ADMIN);
                 case 0:
-                    break;
+                    return ModoExibir.EXIT;
                 default:
                     System.out.println("Opção inválida.");
             }
