@@ -35,8 +35,8 @@ public class ClienteController {
                 cliente = new ClientePJ(nome, cnpj, telefone, email, senha);
             }
             case ADMIN -> {
-                String cpf = Input.getString("Digite o cpf:", scanner);
-                cliente = new Admin(nome, cpf, telefone, email, senha);
+                String cargo = Input.getString("Digite seu cargo:", scanner);
+                cliente = new Admin(nome, telefone, email, senha, cargo);
             }
             default -> cliente = null;
         }
