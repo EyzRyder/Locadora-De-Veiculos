@@ -12,7 +12,7 @@ public class ClienteRepositorio implements Repositorio<Cliente> {
     private final Map<String, Cliente> clientes;
 
     public ClienteRepositorio() {
-        Cliente admin = new Admin("ADM", "(11)69504-6351", "adm@ada.com", "123", "DEV");
+        Cliente admin = new Admin("ADM", "(11)69504-6351", "adm@ada.com", "123muitoforte", "DEV");
         Map<String, Cliente> tempClienteList = new HashMap<>();
         tempClienteList.put(admin.getEmail(), admin);
         this.clientes = tempClienteList;
@@ -47,7 +47,7 @@ public class ClienteRepositorio implements Repositorio<Cliente> {
     public Cliente delete(Cliente cliente) throws ObjetoNaoEncontradoException {
         Cliente clienteRemovido;
         if (!clientes.containsKey(cliente.getEmail())) {
-            throw new ObjetoNaoEncontradoException();
+            throw new ObjetoNaoEncontradoException("Cliente");
         }
         clienteRemovido = clientes.remove(cliente.getEmail());
         return clienteRemovido;
