@@ -5,7 +5,7 @@ public class Veiculo {
     private String modelo;
     private String placa;
     private int ano;
-    private String cor; // Dá pra fazer um ENUM
+    private String cor;
 
     public Veiculo (String modelo, String placa, int ano, String cor) {
         this.modelo = modelo;

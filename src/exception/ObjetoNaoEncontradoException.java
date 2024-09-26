@@ -1,7 +1,7 @@
 package exception;
 
 public class ObjetoNaoEncontradoException extends Exception {
-    public ObjetoNaoEncontradoException() {
-        super("Objeto não foi encontrado.");
+    public ObjetoNaoEncontradoException(String mensagem) {
+        super(mensagem + " não foi encontrado(a).");
     }
 }

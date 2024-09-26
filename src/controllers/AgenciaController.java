@@ -7,10 +7,7 @@ import util.ModoExibir;
 import java.util.Scanner;
 
 public class AgenciaController {
-    public static ModoExibir cadastrarAgencia(
-            RepositorioController repositorioController,
-            TipoAgencia tipoAgencia
-    ) {
+    public static ModoExibir cadastrarAgencia(RepositorioController repositorioController, TipoAgencia tipoAgencia) {
 
         String cnpj;
         String razaoSocial;
@@ -50,8 +47,7 @@ public class AgenciaController {
         Scanner scanner = new Scanner(System.in);
 
         cnpj = Input.getString("Digite o CNPJ do cliente: ", scanner);
-        agencia = repositorioController.agencia.find(cnpj);
-
+        agencia = repositorioController.agencias.find(cnpj);
         if (agencia == null) {
             System.err.println("Agencia não encontrado, Enter para continuar...");
             scanner.nextLine();

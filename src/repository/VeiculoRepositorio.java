@@ -1,49 +1,62 @@
 package repository;
 
 import entities.veiculo.Veiculo;
-import exception.ObjetoNaoEncontradoException;
-
+import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-public class VeiculoRepositorio implements Repositorio<Veiculo> {
-
-    private final Map<String, Veiculo> veiculos;
+public class VeiculoRepositorio {
+    private ArrayList<Veiculo> veiculos;
+    private final String arquivo = "veiculos.dat";
 
     public VeiculoRepositorio() {
-        veiculos = new HashMap<>();
+        veiculos = new ArrayList<>();
+        loadData();
     }
 
-    @Override
-    public Veiculo[] getAll() {
-        return veiculos.values().toArray(new Veiculo[veiculos.size()]);
+    public void addVeiculo(Veiculo veiculo) {
+        veiculos.add(veiculo);
+        saveData();
     }
 
-    @Override
-    public Veiculo find(String placa) {
-        return veiculos.get(placa);
+    public void dropVeiculo(String placa) {
+        veiculos.removeIf(veiculo -> veiculo.getPlaca().equalsIgnoreCase(placa));
+        saveData();
     }
 
-    @Override
-    public Veiculo update(String placa,Veiculo veiculo) {
-        return veiculos.put(placa,veiculo);
+    public ArrayList<Veiculo> listVeiculos() {
+        return veiculos;
     }
 
-    @Override
-    public Veiculo add(Veiculo veiculo)   {
-        return veiculos.put(veiculo.getPlaca(),veiculo);
-
-    }
-
-    @Override
-    public Veiculo delete(Veiculo veiculo) throws ObjetoNaoEncontradoException {
-        Veiculo veiculoRemovido;
-        if (!veiculos.containsKey(veiculo.getPlaca())) {
-            throw new ObjetoNaoEncontradoException();
+    public Veiculo findVeiculoByPlaca(String placa) {
+        for (Veiculo veiculo : veiculos) {
+            if (veiculo.getPlaca().equalsIgnoreCase(placa)) {
+                return veiculo;
+            }
         }
-        veiculoRemovido = veiculos.remove(veiculo.getPlaca());
-        return veiculoRemovido;
+        return null;
     }
 
+    //TODO fazer o updateVeiculo
+
+    public void updateVeiculo(String placa) {
+
+    }
+
+    public void saveData() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo))) {
+            oos.writeObject(veiculos);
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar: " + e.getMessage());
+        }
+    }
+
+    public void loadData() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(arquivo))) {
+            veiculos = (ArrayList<Veiculo>) ois.readObject();
+        } catch (FileNotFoundException e) {
+            System.out.println("Arquivo não encontrado: " + e.getMessage());
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+        }
+    }
 }

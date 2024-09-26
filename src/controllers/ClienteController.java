@@ -8,10 +8,7 @@ import java.util.Scanner;
 
 public class ClienteController {
 
-    public static ModoExibir cadastrarCliente(
-            RepositorioController repositorioController,
-            TipoCliente tipoCliente
-    ) {
+    public static ModoExibir cadastrarCliente( RepositorioController repositorioController, TipoCliente tipoCliente) {
 
         String nome;
         String telefone;
@@ -21,9 +18,9 @@ public class ClienteController {
         Scanner scanner = new Scanner(System.in);
 
         nome = Input.getString("Digite o nome:", scanner);
-        telefone = Input.getString("Digite o telefone", scanner);
-        email = Input.getString("Digite o email", scanner);
-        senha = Input.getString("Digite a senha", scanner);
+        telefone = Input.getString("Digite o telefone:", scanner);
+        email = Input.getString("Digite o email:", scanner);
+        senha = Input.getString("Digite a senha:", scanner);
 
         switch (tipoCliente) {
             case CLIENTEPF -> {
