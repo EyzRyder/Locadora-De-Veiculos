@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.agencia.*;
+import exception.ObjetoNaoEncontradoException;
 import util.Input;
 import util.ModoExibir;
 
@@ -38,7 +39,7 @@ public class AgenciaController {
 
     }
 
-    public static ModoExibir alterarAgencia(RepositorioController repositorioController) {
+    public static ModoExibir alterarAgencia(RepositorioController repositorioController) throws ObjetoNaoEncontradoException {
 
         String cnpj;
         String razaoSocial;
@@ -47,7 +48,7 @@ public class AgenciaController {
         Scanner scanner = new Scanner(System.in);
 
         cnpj = Input.getString("Digite o CNPJ do cliente: ", scanner);
-        agencia = repositorioController.agencias.find(cnpj);
+        agencia = repositorioController.agencias.findAgenciaByCNPJ(cnpj);
         if (agencia == null) {
             System.err.println("Agencia não encontrado, Enter para continuar...");
             scanner.nextLine();
