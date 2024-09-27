@@ -5,7 +5,6 @@ public enum ModoExibir {
     PRINCIPAL("principal"),
     CADASTRARAGENCIA("cadastraragencia"),
     CADASTRARCLIENTE("cadastrarcliente"),
-    ALTERARCLIENTE("alterarcliente"),
     ADMIN("admin"),
     EXIT("exit");
 

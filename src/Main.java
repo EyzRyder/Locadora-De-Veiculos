@@ -1,6 +1,4 @@
-import controllers.ClienteController;
 import controllers.RepositorioController;
-import repository.ClienteRepositorio;
 import util.ModoExibir;
 import util.menu.MenuAdmin;
 import util.menu.MenuCadastrarAgencia;
@@ -17,7 +15,6 @@ public class Main {
                 case PRINCIPAL -> MenuPrincipal.exibirMenu(modo,repositorioController);
                 case CADASTRARAGENCIA -> MenuCadastrarAgencia.exibirMenu(modo,repositorioController);
                 case CADASTRARCLIENTE -> MenuCadastrarCliente.exibirMenu(modo,repositorioController);
-                case ALTERARCLIENTE -> ClienteController.alterarCliente(repositorioController);
                 case ADMIN -> MenuAdmin.exibirMenu(modo,repositorioController);
                 case EXIT -> ModoExibir.EXIT;
             };

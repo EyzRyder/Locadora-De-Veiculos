@@ -22,15 +22,19 @@ public class PrincipalController {
 
         if (cliente == null ) {
             System.err.println("Não exite usuario com esse email");
+            scanner.nextLine();
             return ModoExibir.PRINCIPAL;
         }
 
         if (!cliente.verificarSenha(senha)) {
             System.err.println("Senha incorreta");
+            scanner.nextLine();
             return ModoExibir.PRINCIPAL;
         }
 
+        repositorioController.setUsuarioAtual(cliente);
         if (cliente instanceof Admin admin) {
+            repositorioController.setUsuarioAtual(admin);
             if (Input.getBoolen("Deseja entrar na tela de Admin?", scanner)) {
                 return ModoExibir.ADMIN;
             }

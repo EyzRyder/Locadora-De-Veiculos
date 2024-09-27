@@ -22,7 +22,7 @@ public class MenuCadastrarCliente  {
                     ║  [1] ⇨ Cliente PJ                            ║
                     ║  [2] ⇨ Cliente PF                            ║
                     ║  [3] ⇨ Admin                                 ║
-                    ║  [0] ⇨ Sair                                  ║
+                    ║  [0] ⇨ Voltar                                ║
                     ╚══════════════════════════════════════════════╝
                     ╔══════════════════════════════════════════════╗
                     ║         Selecione a tarefa desejada...       ║
@@ -39,7 +39,7 @@ public class MenuCadastrarCliente  {
                 case 3:
                     return ClienteController.cadastrarCliente(repositorioController, TipoCliente.ADMIN);
                 case 0:
-                    return ModoExibir.EXIT;
+                    return ModoExibir.ADMIN;
                 default:
                     System.out.println("Opção inválida.");
             }

@@ -4,6 +4,7 @@ import entities.cliente.*;
 import util.Input;
 import util.ModoExibir;
 
+import java.util.Collection;
 import java.util.Scanner;
 
 public class ClienteController {
@@ -56,6 +57,7 @@ public class ClienteController {
         if (cliente == null) {
             System.err.println("Cliente não encontrado, Enter para continuar...");
             scanner.nextLine();
+            scanner.close();
             return ModoExibir.ADMIN;
         } else {
             nome = Input.getString("Digite o nome:", scanner);
@@ -64,9 +66,17 @@ public class ClienteController {
             cliente.setNome(nome == null || nome.isEmpty() ? cliente.getNome() : nome);
             cliente.setTelefone(telefone == null || telefone.isEmpty() ? cliente.getTelefone() : telefone);
 
+            scanner.close();
             return repositorioController.alterarCliente(cliente);
         }
 
     }
 
+    public static ModoExibir listarClientes(RepositorioController repositorioController) {
+        Collection<Cliente> clientes =  repositorioController.clientes.getAll();
+        for (Cliente cliente : clientes){
+            System.out.printf("Nome: %s, Email: %s, Telephone: %s %n",cliente.getNome(),cliente.getEmail(),cliente.getTelefone());
+        }
+        return ModoExibir.ADMIN;
+    }
 }

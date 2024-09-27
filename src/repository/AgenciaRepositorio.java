@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AgenciaRepositorio {
+public class AgenciaRepositorio implements Repositorio<Agencia>{
 
     private final List<Agencia> agencias;
     private final String arquivo = "agencias.dat";
@@ -18,17 +18,11 @@ public class AgenciaRepositorio {
     }
 
     public void addAgencia(Agencia agencia) {
-        agencias.add(agencia);
-        saveData();
+        add(agencia);
     }
 
-    public void dropAgencia(String cnpj) throws ObjetoNaoEncontradoException {
-        Agencia agencia = findAgenciaByCNPJ(cnpj);
-        if (agencia == null) {
-            throw new ObjetoNaoEncontradoException("Agência não encontrada.");
-        }
-        agencias.remove(agencia);
-        saveData();
+    public void dropAgencia(Agencia agencia) throws ObjetoNaoEncontradoException {
+        delete(agencia);
     }
 
     public List<Agencia> listAgencias() {
@@ -36,22 +30,12 @@ public class AgenciaRepositorio {
     }
 
     public Agencia findAgenciaByCNPJ(String cnpj) {
-        for (Agencia agencia : agencias) {
-            if (agencia.getCnpj().equalsIgnoreCase(cnpj)) {
-                return agencia;
-            }
-        }
-        return null;
+        return find(cnpj);
     }
 
-    public void updateAgencia(String cnpj, Agencia agenciaAtualizada) throws ObjetoNaoEncontradoException {
-        Agencia agenciaExistente = findAgenciaByCNPJ(cnpj);
-        if (agenciaExistente == null) {
-            throw new ObjetoNaoEncontradoException("Agencia");
-        }
-        int index = agencias.indexOf(agenciaExistente);
-        agencias.set(index, agenciaAtualizada);
-        saveData();
+    public void updateAgencia(Agencia agenciaAtualizada) {
+        update(agenciaAtualizada);
+
     }
 
     private void saveData() {
@@ -71,5 +55,34 @@ public class AgenciaRepositorio {
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Erro ao carregar os dados: " + e.getMessage());
         }
+    }
+
+    @Override
+    public Agencia find(String key) {
+        for (Agencia agencia : agencias) {
+            if (agencia.getCnpj().equalsIgnoreCase(key)) {
+                return agencia;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void update(Agencia item) {
+        int index = agencias.indexOf(item);
+        agencias.set(index, item);
+        saveData();
+    }
+
+    @Override
+    public void add(Agencia item) {
+        agencias.add(item);
+        saveData();
+    }
+
+    @Override
+    public void delete(Agencia item) {
+        agencias.remove(item);
+        saveData();
     }
 }
