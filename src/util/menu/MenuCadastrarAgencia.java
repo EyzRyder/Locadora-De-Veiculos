@@ -40,7 +40,7 @@ public class MenuCadastrarAgencia {
                 case 3:
                     return AgenciaController.cadastrarAgencia(repositorioController, TipoAgencia.GRANDE_PORTE);
                 case 0:
-                    return ModoExibir.ADMIN;
+                    return ModoExibir.CADASTRARAGENCIA;
                 default:
                     System.out.println("Opção inválida.");
             }

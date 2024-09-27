@@ -42,4 +42,12 @@ public class VeiculoController {
 
         return repositorioController.adicionarVeiculo(veiculo);
     }
+
+
+    public static ModoExibir alterarVeiculo(RepositorioController repositorioController) {
+        return ModoExibir.ADMIN;
+    }
+    public static ModoExibir listarVeiculo(RepositorioController repositorioController) {
+        return ModoExibir.ADMIN;
+    }
 }
