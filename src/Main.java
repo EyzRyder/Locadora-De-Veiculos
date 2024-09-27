@@ -10,6 +10,7 @@ public class Main {
         while (!modo.getDescricao().equals("exit"))
             modo = switch (modo) {
                 case PRINCIPAL -> MenuPrincipal.exibirMenu(modo,repositorioController);
+                case CLIENTE -> MenuCliente.exibirMenu(modo,repositorioController);
                 case ADMIN -> MenuAdmin.exibirMenu(modo,repositorioController);
                 case MENUMANUTENCAOCLIENTE -> MenuManutencaoCliente.exibirMenu(modo,repositorioController);
                 case MENUMANUTENCAOAGENCIA -> MenuManutencaoAgencia.exibirMenu(modo,repositorioController);

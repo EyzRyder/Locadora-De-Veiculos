@@ -3,6 +3,7 @@ package util;
 public enum ModoExibir {
 
     PRINCIPAL("principal"),
+    CLIENTE("cliente"),
     ADMIN("admin"),
     MENUMANUTENCAOCLIENTE("menumanutencaocliente"),
     MENUMANUTENCAOAGENCIA("menumanutencaoagencia"),
