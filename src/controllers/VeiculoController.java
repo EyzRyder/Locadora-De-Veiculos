@@ -1,9 +1,11 @@
 package controllers;
 
+import entities.agencia.Agencia;
 import entities.veiculo.*;
 import util.Input;
 import util.ModoExibir;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class VeiculoController {
@@ -47,7 +49,12 @@ public class VeiculoController {
     public static ModoExibir alterarVeiculo(RepositorioController repositorioController) {
         return ModoExibir.ADMIN;
     }
+
     public static ModoExibir listarVeiculo(RepositorioController repositorioController) {
+        List<Veiculo> veiculos = repositorioController.veiculos.listVeiculos();
+        for (Veiculo veiculo : veiculos) {
+            System.out.printf("Placa: %s, Modelo: %s, Ano: %d, Cor: %s %n", veiculo.getPlaca(), veiculo.getModelo(), veiculo.getAno(), veiculo.getCor());
+        }
         return ModoExibir.ADMIN;
     }
 }
