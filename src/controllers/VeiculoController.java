@@ -1,6 +1,5 @@
 package controllers;
 
-import entities.agencia.Agencia;
 import entities.veiculo.*;
 import util.Input;
 import util.ModoExibir;
