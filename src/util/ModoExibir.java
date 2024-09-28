@@ -3,10 +3,14 @@ package util;
 public enum ModoExibir {
 
     PRINCIPAL("principal"),
+    CLIENTE("cliente"),
+    ADMIN("admin"),
+    MENUMANUTENCAOCLIENTE("menumanutencaocliente"),
+    MENUMANUTENCAOAGENCIA("menumanutencaoagencia"),
+    MENUMANUTENCAOVEICULO("menumanutencaoveiculo"),
     CADASTRARAGENCIA("cadastraragencia"),
     CADASTRARCLIENTE("cadastrarcliente"),
-    ALTERARCLIENTE("alterarcliente"),
-    ADMIN("admin"),
+    CADASTRARVEICULO("cadastarveiculo"),
     EXIT("exit");
 
     private final String descricao;

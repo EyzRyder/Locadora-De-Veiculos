@@ -11,11 +11,13 @@ import util.ModoExibir;
 
 public class RepositorioController {
 
+    public Cliente usuarioAtual;
     public ClienteRepositorio clientes;
     public AgenciaRepositorio agencias;
     public VeiculoRepositorio veiculos;
 
     public RepositorioController() {
+        this.usuarioAtual = null;
         this.clientes = new ClienteRepositorio();
         this.agencias = new AgenciaRepositorio();
         this.veiculos = new VeiculoRepositorio();
@@ -23,22 +25,30 @@ public class RepositorioController {
 
     //CLIENTE
 
+    public void setUsuarioAtual(Cliente usuarioAtual) {
+        this.usuarioAtual = usuarioAtual;
+    }
+
+    public Cliente getUsuarioAtual() {
+        return usuarioAtual;
+    }
+
     public ModoExibir adicionarCliente(Cliente cliente) {
         if (cliente == null || clientes.find(cliente.getEmail()) != null) {
             System.out.println("Cliente ja existe.");
         } else {
             clientes.add(cliente);
         }
-        return ModoExibir.PRINCIPAL;
+        return ModoExibir.CADASTRARCLIENTE;
     }
 
     public ModoExibir alterarCliente(Cliente cliente) {
         if (cliente == null || clientes.find(cliente.getEmail()) != null) {
             System.out.println("Cliente inexistente.");
         } else {
-            clientes.update(cliente.getEmail(), cliente);
+            clientes.update(cliente);
         }
-        return ModoExibir.PRINCIPAL;
+        return ModoExibir.ADMIN;
     }
 
     //AGENCIA
@@ -50,21 +60,21 @@ public class RepositorioController {
             agencias.addAgencia(agencia);
             System.out.println("Agência adicionada com sucesso.");
         }
-        return ModoExibir.PRINCIPAL;
+        return ModoExibir.ADMIN;
     }
 
     public ModoExibir removerAgencia(Agencia agencia) throws ObjetoNaoEncontradoException {
-        agencias.dropAgencia(agencia.getCnpj());
+        agencias.dropAgencia(agencia);
         System.out.println("Agência removida com sucesso.");
 
-        return ModoExibir.PRINCIPAL;
+        return ModoExibir.ADMIN;
     }
 
-    public ModoExibir alterarAgencia(Agencia agencia) throws ObjetoNaoEncontradoException {
-        agencias.updateAgencia(agencia.getCnpj(), agencia);
+    public ModoExibir alterarAgencia(Agencia agencia)  {
+        agencias.updateAgencia(agencia);
         System.out.println("Agência alterada com sucesso.");
 
-        return ModoExibir.PRINCIPAL;
+        return ModoExibir.ADMIN;
     }
 
     //VEÍCULO
@@ -76,20 +86,20 @@ public class RepositorioController {
             veiculos.addVeiculo(veiculo);
             System.out.println("Veículo adicionado com sucesso.");
         }
-        return ModoExibir.PRINCIPAL;
+        return ModoExibir.ADMIN;
     }
 
-    public ModoExibir removerVeículo(Veiculo veiculo) throws ObjetoNaoEncontradoException {
-        veiculos.dropVeiculo(veiculo.getPlaca());
+    public ModoExibir removerVeiculo(Veiculo veiculo) {
+        veiculos.dropVeiculo(veiculo);
         System.out.println("Veículo removido com sucesso.");
 
-        return ModoExibir.PRINCIPAL;
+        return ModoExibir.ADMIN;
     }
 
-    public ModoExibir alterarVeiculo(Veiculo veiculo) throws ObjetoNaoEncontradoException {
-        veiculos.updateVeiculo(veiculo.getPlaca());
+    public ModoExibir alterarVeiculo(Veiculo veiculo) {
+        veiculos.updateVeiculo(veiculo);
         System.out.println("Veículo alterado com sucesso.");
 
-        return ModoExibir.PRINCIPAL;
+        return ModoExibir.ADMIN;
     }
 }

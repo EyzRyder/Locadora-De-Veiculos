@@ -1,10 +1,11 @@
 package repository;
 
 import entities.veiculo.Veiculo;
+
 import java.io.*;
 import java.util.ArrayList;
 
-public class VeiculoRepositorio {
+public class VeiculoRepositorio implements Repositorio<Veiculo> {
     private ArrayList<Veiculo> veiculos;
     private final String arquivo = "veiculos.dat";
 
@@ -14,13 +15,11 @@ public class VeiculoRepositorio {
     }
 
     public void addVeiculo(Veiculo veiculo) {
-        veiculos.add(veiculo);
-        saveData();
+        add(veiculo);
     }
 
-    public void dropVeiculo(String placa) {
-        veiculos.removeIf(veiculo -> veiculo.getPlaca().equalsIgnoreCase(placa));
-        saveData();
+    public void dropVeiculo(Veiculo veiculo) {
+        delete(veiculo);
     }
 
     public ArrayList<Veiculo> listVeiculos() {
@@ -28,18 +27,11 @@ public class VeiculoRepositorio {
     }
 
     public Veiculo findVeiculoByPlaca(String placa) {
-        for (Veiculo veiculo : veiculos) {
-            if (veiculo.getPlaca().equalsIgnoreCase(placa)) {
-                return veiculo;
-            }
-        }
-        return null;
+        return find(placa);
     }
 
-    //TODO fazer o updateVeiculo
-
-    public void updateVeiculo(String placa) {
-
+    public void updateVeiculo(Veiculo veiculo) {
+        update(veiculo);
     }
 
     public void saveData() {
@@ -58,5 +50,33 @@ public class VeiculoRepositorio {
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Erro ao ler o arquivo: " + e.getMessage());
         }
+    }
+
+    @Override
+    public Veiculo find(String placa) {
+        for (Veiculo veiculo : veiculos) {
+            if (veiculo.getPlaca().equalsIgnoreCase(placa)) {
+                return veiculo;
+            }
+        }
+        return null;
+    }
+
+    //TODO fazer o updateVeiculo
+    @Override
+    public void update(Veiculo veiculo) {
+
+    }
+
+    @Override
+    public void add(Veiculo veiculo) {
+        veiculos.add(veiculo);
+        saveData();
+    }
+
+    @Override
+    public void delete(Veiculo veiculo) {
+        veiculos.remove(veiculo);
+        saveData();
     }
 }

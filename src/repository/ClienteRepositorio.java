@@ -2,8 +2,6 @@ package repository;
 
 import entities.cliente.Admin;
 import entities.cliente.Cliente;
-import exception.InstanciaInvalidaException;
-import exception.ObjetoNaoEncontradoException;
 
 import java.util.*;
 
@@ -18,9 +16,8 @@ public class ClienteRepositorio implements Repositorio<Cliente> {
         this.clientes = tempClienteList;
     }
 
-    @Override
-    public Cliente[] getAll() {
-        return clientes.values().toArray(new Cliente[clientes.size()]);
+    public Collection<Cliente> getAll() {
+        return clientes.values();
     }
 
     @Override
@@ -34,23 +31,18 @@ public class ClienteRepositorio implements Repositorio<Cliente> {
     }
 
     @Override
-    public Cliente update(String email, Cliente cliente) {
-        return clientes.put(email, cliente);
+    public void update(Cliente cliente) {
+        clientes.put(cliente.getEmail(), cliente);
     }
 
     @Override
-    public Cliente add(Cliente cliente) {
-        return clientes.put(cliente.getEmail(), cliente);
+    public void add(Cliente cliente) {
+        clientes.put(cliente.getEmail(), cliente);
     }
 
     @Override
-    public Cliente delete(Cliente cliente) throws ObjetoNaoEncontradoException {
-        Cliente clienteRemovido;
-        if (!clientes.containsKey(cliente.getEmail())) {
-            throw new ObjetoNaoEncontradoException("Cliente");
-        }
-        clienteRemovido = clientes.remove(cliente.getEmail());
-        return clienteRemovido;
+    public void delete(Cliente cliente) {
+        clientes.remove(cliente.getEmail());
     }
 
 }

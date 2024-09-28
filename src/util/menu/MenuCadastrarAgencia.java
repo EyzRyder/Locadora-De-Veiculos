@@ -1,6 +1,8 @@
 package util.menu;
 
+import controllers.AgenciaController;
 import controllers.RepositorioController;
+import entities.agencia.TipoAgencia;
 import util.Input;
 import util.ModoExibir;
 
@@ -20,7 +22,7 @@ public class MenuCadastrarAgencia {
                     ║  [1] ⇨ Pequeno Porte                         ║
                     ║  [2] ⇨ Medio Porte                           ║
                     ║  [2] ⇨ Grande Porte                          ║
-                    ║  [0] ⇨ Sair                                  ║
+                    ║  [0] ⇨ Voltar                                ║
                     ╚══════════════════════════════════════════════╝
                     ╔══════════════════════════════════════════════╗
                     ║         Selecione a tarefa desejada...       ║
@@ -32,13 +34,13 @@ public class MenuCadastrarAgencia {
 
             switch (escolha) {
                 case 1:
-                    break;
+                    return AgenciaController.cadastrarAgencia(repositorioController, TipoAgencia.PEQUENO_PORTE);
                 case 2:
-                    break;
+                    return AgenciaController.cadastrarAgencia(repositorioController, TipoAgencia.MEDIO_PORTE);
                 case 3:
-                    break;
+                    return AgenciaController.cadastrarAgencia(repositorioController, TipoAgencia.GRANDE_PORTE);
                 case 0:
-                    break;
+                    return ModoExibir.CADASTRARAGENCIA;
                 default:
                     System.out.println("Opção inválida.");
             }

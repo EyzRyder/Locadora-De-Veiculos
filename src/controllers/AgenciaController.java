@@ -1,10 +1,10 @@
 package controllers;
 
 import entities.agencia.*;
-import exception.ObjetoNaoEncontradoException;
 import util.Input;
 import util.ModoExibir;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class AgenciaController {
@@ -21,25 +21,17 @@ public class AgenciaController {
         razaoSocial = Input.getString("Digite a Razão Social: ", scanner);
         nomeFantasia = Input.getString("Digite o Nome Fantasia: ", scanner);
 
-        switch (tipoAgencia) {
-            case PEQUENO_PORTE -> {
-                agencia = new AgenciaPequenoPorte(cnpj, razaoSocial, nomeFantasia);
-            }
-            case MEDIO_PORTE -> {
-                agencia = new AgenciaMedioPorte(cnpj, razaoSocial, nomeFantasia);
-            }
-            case GRANDE_PORTE -> {
-                agencia = new AgenciaGrandePorte(cnpj, razaoSocial, nomeFantasia);
-
-            }
-            default -> agencia = null;
-        }
+        agencia = switch (tipoAgencia) {
+            case PEQUENO_PORTE -> new AgenciaPequenoPorte(cnpj, razaoSocial, nomeFantasia);
+            case MEDIO_PORTE -> new AgenciaMedioPorte(cnpj, razaoSocial, nomeFantasia);
+            case GRANDE_PORTE -> new AgenciaGrandePorte(cnpj, razaoSocial, nomeFantasia);
+        };
 
         return repositorioController.adicionarAgencia(agencia);
 
     }
 
-    public static ModoExibir alterarAgencia(RepositorioController repositorioController) throws ObjetoNaoEncontradoException {
+    public static ModoExibir alterarAgencia(RepositorioController repositorioController)  {
 
         String cnpj;
         String razaoSocial;
@@ -48,7 +40,9 @@ public class AgenciaController {
         Scanner scanner = new Scanner(System.in);
 
         cnpj = Input.getString("Digite o CNPJ do cliente: ", scanner);
+
         agencia = repositorioController.agencias.findAgenciaByCNPJ(cnpj);
+
         if (agencia == null) {
             System.err.println("Agencia não encontrado, Enter para continuar...");
             scanner.nextLine();
@@ -63,6 +57,14 @@ public class AgenciaController {
             return repositorioController.alterarAgencia(agencia);
         }
 
+    }
+
+    public static ModoExibir listarAgencias(RepositorioController repositorioController) {
+        List<Agencia> agencias =  repositorioController.agencias.listAgencias();
+        for (Agencia agencia : agencias){
+            System.out.printf("Nome: %s, Razao Social: %s %n",agencia.getNomeFantasia(),agencia.getRazaoSocial());
+        }
+        return ModoExibir.ADMIN;
     }
 
 }

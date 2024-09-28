@@ -1,15 +1,14 @@
 package util.menu;
 
-import controllers.ClienteController;
 import controllers.RepositorioController;
-import entities.cliente.TipoCliente;
+import controllers.VeiculoController;
+import entities.veiculo.TipoVeiculo;
 import util.Input;
 import util.ModoExibir;
 
 import java.util.Scanner;
 
-public class MenuCadastrarCliente  {
-
+public class MenuCadastrarVeiculo {
     public static ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
@@ -17,11 +16,11 @@ public class MenuCadastrarCliente  {
         do {
             String menu = """
                     ╔══════════════════════════════════════════════╗
-                    ║              Cadastrar Cliente               ║
+                    ║              Cadastrar Veículo               ║
                     ╠══════════════════════════════════════════════╣
-                    ║  [1] ⇨ Cliente PJ                            ║
-                    ║  [2] ⇨ Cliente PF                            ║
-                    ║  [3] ⇨ Admin                                 ║
+                    ║  [1] ⇨ Carro                                 ║
+                    ║  [2] ⇨ Moto                                  ║
+                    ║  [3] ⇨ Caminhão                              ║
                     ║  [0] ⇨ Voltar                                ║
                     ╚══════════════════════════════════════════════╝
                     ╔══════════════════════════════════════════════╗
@@ -33,13 +32,13 @@ public class MenuCadastrarCliente  {
 
             switch (escolha) {
                 case 1:
-                    return ClienteController.cadastrarCliente(repositorioController, TipoCliente.CLIENTEPF);
+                    return VeiculoController.cadastrarVeiculo(repositorioController, TipoVeiculo.CARRO);
                 case 2:
-                    return ClienteController.cadastrarCliente(repositorioController, TipoCliente.CLIENTEPJ);
+                    return VeiculoController.cadastrarVeiculo(repositorioController, TipoVeiculo.MOTO);
                 case 3:
-                    return ClienteController.cadastrarCliente(repositorioController, TipoCliente.ADMIN);
+                    return VeiculoController.cadastrarVeiculo(repositorioController, TipoVeiculo.CAMINHAO);
                 case 0:
-                    return ModoExibir.CADASTRARCLIENTE;
+                    return ModoExibir.CADASTRARVEICULO;
                 default:
                     System.out.println("Opção inválida.");
             }
@@ -51,4 +50,3 @@ public class MenuCadastrarCliente  {
         return modo;
     }
 }
-

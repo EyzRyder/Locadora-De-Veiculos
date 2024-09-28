@@ -6,7 +6,7 @@ import util.ModoExibir;
 
 import java.util.Scanner;
 
-public class MenuAdmin  {
+public class MenuAdmin {
 
     public static ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
@@ -17,10 +17,10 @@ public class MenuAdmin  {
                     ╔══════════════════════════════════════════════╗
                     ║                 MENU ADMIN                   ║
                     ╠══════════════════════════════════════════════╣
-                    ║  [1] ⇨ Cadastrar Cliente                     ║
-                    ║  [2] ⇨ Alterar dados do Cliente              ║
-                    ║  [3] ⇨ Cadastrar Agencia                     ║
-                    ║  [0] ⇨ Sair                                  ║
+                    ║  [1] ⇨ Manutencao Cliente                    ║
+                    ║  [2] ⇨ Manutencao Agencia                    ║
+                    ║  [3] ⇨ Manutencao Veiculo                    ║
+                    ║  [0] ⇨ Deslogar                              ║
                     ╚══════════════════════════════════════════════╝
                     ╔══════════════════════════════════════════════╗
                     ║         Selecione a tarefa desejada...       ║
@@ -31,12 +31,13 @@ public class MenuAdmin  {
 
             switch (escolha) {
                 case 1:
-                    return ModoExibir.CADASTRARCLIENTE;
+                    return ModoExibir.MENUMANUTENCAOCLIENTE;
                 case 2:
-                    return ModoExibir.ALTERARCLIENTE;
+                    return ModoExibir.MENUMANUTENCAOAGENCIA;
                 case 3:
-                    break;
+                    return ModoExibir.MENUMANUTENCAOVEICULO;
                 case 0:
+                    repositorioController.setUsuarioAtual(null);
                     return ModoExibir.PRINCIPAL;
                 default:
                     System.out.println("Opção inválida.");

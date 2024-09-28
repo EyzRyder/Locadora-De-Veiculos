@@ -1,11 +1,6 @@
-import controllers.ClienteController;
 import controllers.RepositorioController;
-import repository.ClienteRepositorio;
 import util.ModoExibir;
-import util.menu.MenuAdmin;
-import util.menu.MenuCadastrarAgencia;
-import util.menu.MenuCadastrarCliente;
-import util.menu.MenuPrincipal;
+import util.menu.*;
 
 public class Main {
     private static ModoExibir modo = ModoExibir.PRINCIPAL;
@@ -15,10 +10,14 @@ public class Main {
         while (!modo.getDescricao().equals("exit"))
             modo = switch (modo) {
                 case PRINCIPAL -> MenuPrincipal.exibirMenu(modo,repositorioController);
+                case CLIENTE -> MenuCliente.exibirMenu(modo,repositorioController);
+                case ADMIN -> MenuAdmin.exibirMenu(modo,repositorioController);
+                case MENUMANUTENCAOCLIENTE -> MenuManutencaoCliente.exibirMenu(modo,repositorioController);
+                case MENUMANUTENCAOAGENCIA -> MenuManutencaoAgencia.exibirMenu(modo,repositorioController);
+                case MENUMANUTENCAOVEICULO -> MenuManutencaoVeiculo.exibirMenu(modo,repositorioController);
                 case CADASTRARAGENCIA -> MenuCadastrarAgencia.exibirMenu(modo,repositorioController);
                 case CADASTRARCLIENTE -> MenuCadastrarCliente.exibirMenu(modo,repositorioController);
-                case ALTERARCLIENTE -> ClienteController.alterarCliente(repositorioController);
-                case ADMIN -> MenuAdmin.exibirMenu(modo,repositorioController);
+                case CADASTRARVEICULO -> MenuCadastrarVeiculo.exibirMenu(modo,repositorioController);
                 case EXIT -> ModoExibir.EXIT;
             };
 

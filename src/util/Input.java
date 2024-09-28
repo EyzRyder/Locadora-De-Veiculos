@@ -6,17 +6,19 @@ public class Input {
 
     public static int getInt(String promptMessage, Scanner scanner) {
         Integer value = null;
-        System.out.println(promptMessage);
 
         while (value == null) {
             try {
+                System.out.println(promptMessage);
                 System.out.print(">> Input: ");
                 value = Integer.parseInt(scanner.nextLine());
                 System.out.println();
             } catch (NumberFormatException ex) {
                 System.err.println("Input Invalid! Por favor digite um numero inteiro");
+                System.out.println("Aperte enter pra continuar");
                 scanner.nextLine();
             }
+            Screen.clear();
         }
 
         return value;
@@ -25,7 +27,6 @@ public class Input {
 
     public static double getDouble(String promptMessage, Scanner scanner) {
         Double value = null;
-        System.out.println();
         System.out.println(promptMessage);
 
         while (value == null) {
@@ -35,8 +36,10 @@ public class Input {
                 System.out.println();
             } catch (NumberFormatException ex) {
                 System.err.println("Input Invalid! Por favor digite um numero real");
+                System.out.println("Aperte enter pra continuar");
                 scanner.nextLine();
             }
+            Screen.clear();
         }
 
         return value;
@@ -45,7 +48,6 @@ public class Input {
     public static boolean getBoolen(String promptMessage, Scanner scanner) {
         String input = null;
         Boolean value = null;
-        System.out.println();
         System.out.println(promptMessage);
 
         while (value == null) {
@@ -59,8 +61,10 @@ public class Input {
                 System.out.println();
             } catch (RuntimeException ex) {
                 System.err.println("Input Invalid! "+ex);
+                System.out.println("Aperte enter pra continuar");
                 scanner.nextLine();
             }
+            Screen.clear();
         }
 
         return value;
@@ -68,7 +72,6 @@ public class Input {
 
     public static String getString(String promptMessage, Scanner scanner) {
         String value = null;
-        System.out.println();
         System.out.println(promptMessage);
 
         while (value == null || value.isEmpty()) {
@@ -80,11 +83,14 @@ public class Input {
                 }
             } catch (RuntimeException ex) {
                 System.err.println("Input Invalid! " + ex.getMessage());
+                System.out.println("Aperte enter pra continuar");
                 scanner.nextLine();
             } catch (Exception ex) {
                 System.err.println("Input Invalid! Por favor digite um valido");
+                System.out.println("Aperte enter pra continuar");
                 scanner.nextLine();
             }
+            Screen.clear();
         }
 
         return value;

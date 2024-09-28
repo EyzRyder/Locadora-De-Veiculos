@@ -1,15 +1,12 @@
 package util.menu;
 
-import controllers.ClienteController;
 import controllers.RepositorioController;
-import entities.cliente.TipoCliente;
 import util.Input;
 import util.ModoExibir;
 
 import java.util.Scanner;
 
-public class MenuCadastrarCliente  {
-
+public class MenuCliente {
     public static ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
@@ -17,12 +14,12 @@ public class MenuCadastrarCliente  {
         do {
             String menu = """
                     ╔══════════════════════════════════════════════╗
-                    ║              Cadastrar Cliente               ║
+                    ║                 MENU Cliente                 ║
                     ╠══════════════════════════════════════════════╣
-                    ║  [1] ⇨ Cliente PJ                            ║
-                    ║  [2] ⇨ Cliente PF                            ║
-                    ║  [3] ⇨ Admin                                 ║
-                    ║  [0] ⇨ Voltar                                ║
+                    ║  [1] ⇨ Alugar carro                          ║
+                    ║  [2] ⇨ Devolver Carro                        ║
+                    ║  [3] ⇨ Historico                             ║
+                    ║  [0] ⇨ Deslogar                              ║
                     ╚══════════════════════════════════════════════╝
                     ╔══════════════════════════════════════════════╗
                     ║         Selecione a tarefa desejada...       ║
@@ -33,22 +30,20 @@ public class MenuCadastrarCliente  {
 
             switch (escolha) {
                 case 1:
-                    return ClienteController.cadastrarCliente(repositorioController, TipoCliente.CLIENTEPF);
+                    return ModoExibir.PRINCIPAL;
                 case 2:
-                    return ClienteController.cadastrarCliente(repositorioController, TipoCliente.CLIENTEPJ);
+                    return ModoExibir.PRINCIPAL;
                 case 3:
-                    return ClienteController.cadastrarCliente(repositorioController, TipoCliente.ADMIN);
+                    return ModoExibir.PRINCIPAL;
                 case 0:
-                    return ModoExibir.CADASTRARCLIENTE;
+                    repositorioController.setUsuarioAtual(null);
+                    return ModoExibir.PRINCIPAL;
                 default:
                     System.out.println("Opção inválida.");
             }
-
         } while (escolha != 0);
 
         scanner.close();
-
         return modo;
     }
 }
-
