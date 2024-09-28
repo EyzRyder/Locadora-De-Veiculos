@@ -14,7 +14,7 @@ public class AgenciaRepositorio implements Repositorio<Agencia>{
 
     public AgenciaRepositorio() {
         this.agencias = new ArrayList<>();
-        loadData();
+        loadData(arquivo, agencias);
     }
 
     public void addAgencia(Agencia agencia) {
@@ -38,25 +38,6 @@ public class AgenciaRepositorio implements Repositorio<Agencia>{
 
     }
 
-    private void saveData() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo))) {
-            oos.writeObject(agencias);
-        } catch (IOException e) {
-            System.out.println("Erro ao salvar os dados: " + e.getMessage());
-        }
-    }
-
-    private void loadData() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(arquivo))) {
-            agencias.clear();
-            agencias.addAll((List<Agencia>) ois.readObject());
-        } catch (FileNotFoundException e) {
-            System.out.println("Arquivo não encontrado: " + e.getMessage());
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Erro ao carregar os dados: " + e.getMessage());
-        }
-    }
-
     @Override
     public Agencia find(String key) {
         for (Agencia agencia : agencias) {
@@ -71,18 +52,18 @@ public class AgenciaRepositorio implements Repositorio<Agencia>{
     public void update(Agencia item) {
         int index = agencias.indexOf(item);
         agencias.set(index, item);
-        saveData();
+        saveData(arquivo, agencias);
     }
 
     @Override
     public void add(Agencia item) {
         agencias.add(item);
-        saveData();
+        saveData(arquivo, agencias);
     }
 
     @Override
     public void delete(Agencia item) {
         agencias.remove(item);
-        saveData();
+        saveData(arquivo, agencias);
     }
 }

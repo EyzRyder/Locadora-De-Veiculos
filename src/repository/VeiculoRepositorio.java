@@ -11,7 +11,7 @@ public class VeiculoRepositorio implements Repositorio<Veiculo> {
 
     public VeiculoRepositorio() {
         veiculos = new ArrayList<>();
-        loadData();
+        loadData(arquivo, veiculos);
     }
 
     public void addVeiculo(Veiculo veiculo) {
@@ -34,24 +34,6 @@ public class VeiculoRepositorio implements Repositorio<Veiculo> {
         update(veiculo);
     }
 
-    public void saveData() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo))) {
-            oos.writeObject(veiculos);
-        } catch (IOException e) {
-            System.out.println("Erro ao salvar: " + e.getMessage());
-        }
-    }
-
-    public void loadData() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(arquivo))) {
-            veiculos = (ArrayList<Veiculo>) ois.readObject();
-        } catch (FileNotFoundException e) {
-            System.out.println("Arquivo não encontrado: " + e.getMessage());
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
-        }
-    }
-
     @Override
     public Veiculo find(String placa) {
         for (Veiculo veiculo : veiculos) {
@@ -71,12 +53,12 @@ public class VeiculoRepositorio implements Repositorio<Veiculo> {
     @Override
     public void add(Veiculo veiculo) {
         veiculos.add(veiculo);
-        saveData();
+        saveData(arquivo, veiculos);
     }
 
     @Override
     public void delete(Veiculo veiculo) {
         veiculos.remove(veiculo);
-        saveData();
+        saveData(arquivo, veiculos);
     }
 }
