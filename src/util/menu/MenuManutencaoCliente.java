@@ -16,6 +16,7 @@ public class MenuManutencaoCliente {
 
             String menu = """
                     ╔══════════════════════════════════════════════╗
+                    ║                 MENU CLIENTE                 ║
                     ║                 MENU ADMIN                   ║
                     ╠══════════════════════════════════════════════╣
                     ║  [1] ⇨ Cadastrar Cliente                     ║

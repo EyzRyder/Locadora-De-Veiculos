@@ -16,7 +16,7 @@ public class MenuCadastrarVeiculo {
         do {
             String menu = """
                     ╔══════════════════════════════════════════════╗
-                    ║              Cadastrar Cliente               ║
+                    ║              Cadastrar Veículo               ║
                     ╠══════════════════════════════════════════════╣
                     ║  [1] ⇨ Carro                                 ║
                     ║  [2] ⇨ Moto                                  ║

@@ -15,7 +15,7 @@ public class MenuManutencaoAgencia {
         do {
             String menu = """
                     ╔══════════════════════════════════════════════╗
-                    ║                 MENU ADMIN                   ║
+                    ║                 MENU AGÊNCIA                 ║
                     ╠══════════════════════════════════════════════╣
                     ║  [1] ⇨ Cadastrar Agencia                     ║
                     ║  [2] ⇨ Alterar dados da Agencia              ║

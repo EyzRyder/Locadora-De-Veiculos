@@ -15,7 +15,7 @@ public class MenuManutencaoVeiculo {
         do {
             String menu = """
                     ╔══════════════════════════════════════════════╗
-                    ║                 MENU ADMIN                   ║
+                    ║               MENU VEÍCULO                   ║
                     ╠══════════════════════════════════════════════╣
                     ║  [1] ⇨ Cadastrar Veiculo                     ║
                     ║  [2] ⇨ Alterar dados da Veiculo              ║
@@ -31,7 +31,7 @@ public class MenuManutencaoVeiculo {
 
             switch (escolha) {
                 case 1:
-                    return ModoExibir.CADASTRARAGENCIA;
+                    return ModoExibir.CADASTRARVEICULO;
                 case 2:
                     return VeiculoController.alterarVeiculo(repositorioController);
                 case 3:
