@@ -2,6 +2,7 @@ package util.menu;
 
 import controllers.AgenciaController;
 import controllers.RepositorioController;
+import entities.agencia.TipoAgencia;
 import util.Input;
 import util.ModoExibir;
 
@@ -31,7 +32,8 @@ public class MenuManutencaoAgencia {
 
             switch (escolha) {
                 case 1:
-                    return ModoExibir.CADASTRARAGENCIA;
+                    return AgenciaController.cadastrarAgencia(repositorioController, TipoAgencia.MEDIO_PORTE);
+                    //return ModoExibir.CADASTRARAGENCIA; // possivel futuro implementação
                 case 2:
                     return AgenciaController.alterarAgencia(repositorioController);
                 case 3:

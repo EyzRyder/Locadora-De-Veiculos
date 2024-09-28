@@ -1,5 +1,6 @@
 package util;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Input {
@@ -15,6 +16,26 @@ public class Input {
                 System.out.println();
             } catch (NumberFormatException ex) {
                 System.err.println("Input Invalid! Por favor digite um numero inteiro");
+                System.out.println("Aperte enter pra continuar");
+                scanner.nextLine();
+            }
+            Screen.clear();
+        }
+
+        return value;
+    }
+    public static int getInt(String promptMessage, Scanner scanner, List<Integer> numbers) {
+
+        Integer value = null;
+
+        while (value == null || !numbers.contains(value)) {
+            try {
+                System.out.println(promptMessage);
+                System.out.print(">> Input: ");
+                value = Integer.parseInt(scanner.nextLine());
+                System.out.println();
+            } catch (NumberFormatException ex) {
+                System.err.println("Input Invalid! Por favor digite um numero inteiro apresentado");
                 System.out.println("Aperte enter pra continuar");
                 scanner.nextLine();
             }
@@ -76,6 +97,7 @@ public class Input {
 
         while (value == null || value.isEmpty()) {
             try {
+                System.out.print(">> Input: ");
                 value = scanner.nextLine();
                 System.out.println();
                 if (value.isEmpty()) {

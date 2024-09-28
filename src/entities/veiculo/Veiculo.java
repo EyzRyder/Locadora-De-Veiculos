@@ -6,12 +6,14 @@ public class Veiculo {
     private String placa;
     private int ano;
     private String cor;
+    private String agenciaCNPJ;
 
-    public Veiculo (String modelo, String placa, int ano, String cor) {
+    public Veiculo (String modelo, String placa, int ano, String cor,String agenciaCNPJ) {
         this.modelo = modelo;
         this.placa = placa;
         this.ano = ano;
         this.cor = cor;
+        this.agenciaCNPJ = agenciaCNPJ;
     }
 
     //get's
@@ -32,6 +34,10 @@ public class Veiculo {
         return cor;
     }
 
+    public String getAgenciaCNPJ() {
+        return agenciaCNPJ;
+    }
+
     //set's
 
     public void setModelo(String modelo) {
@@ -48,5 +54,9 @@ public class Veiculo {
 
     public void setCor(String cor) {
         this.cor = cor;
+    }
+
+    public void setAgenciaCNPJ(String agenciaCNPJ) {
+        this.agenciaCNPJ = agenciaCNPJ;
     }
 }
