@@ -10,10 +10,7 @@ public class ClienteRepositorio implements Repositorio<Cliente> {
     private final Map<String, Cliente> clientes;
 
     public ClienteRepositorio() {
-        Cliente admin = new Admin("ADM", "(11)69504-6351", "adm@ada.com", "123muitoforte", "DEV");
-        Map<String, Cliente> tempClienteList = new HashMap<>();
-        tempClienteList.put(admin.getEmail(), admin);
-        this.clientes = tempClienteList;
+        this.clientes = new HashMap<>();
     }
 
     public Collection<Cliente> getAll() {

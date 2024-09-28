@@ -1,7 +1,11 @@
 package controllers;
 
 import entities.agencia.Agencia;
+import entities.cliente.Admin;
 import entities.cliente.Cliente;
+import entities.veiculo.Caminhao;
+import entities.veiculo.Carro;
+import entities.veiculo.Moto;
 import entities.veiculo.Veiculo;
 import exception.ObjetoNaoEncontradoException;
 import repository.AgenciaRepositorio;
@@ -21,6 +25,23 @@ public class RepositorioController {
         this.clientes = new ClienteRepositorio();
         this.agencias = new AgenciaRepositorio();
         this.veiculos = new VeiculoRepositorio();
+        carregarDados();
+    }
+
+    private void carregarDados(){
+        Cliente adm = new Admin("ADM", "(11)69504-6351", "adm@ada.com", "123muitoforte", "DEV");
+        clientes.add(adm);
+
+        Agencia agenciaPricipal = new Agencia("80.968.812/0001-64","Santader Locadora Ltda","Santader Locadora");
+        agencias.add(agenciaPricipal);
+        Veiculo carro1 = new Carro("Fiat Movi","MOBI",2024,"Vermelho",agenciaPricipal.getCnpj(),4);
+        veiculos.add(carro1);
+        Veiculo carro2 = new Carro("Fiat Uno","DBZ-GT",2024,"Vermelho",agenciaPricipal.getCnpj(),4);
+        veiculos.add(carro2);
+        Veiculo moto = new Moto("Fiat Movi","MOBI",2024,"Vermelho",agenciaPricipal.getCnpj(),2);
+        veiculos.add(moto);
+        Veiculo caminhao = new Caminhao("Fiat Uno","DBZ-GT",2024,"Vermelho",agenciaPricipal.getCnpj(),10,10);
+        veiculos.add(caminhao);
     }
 
     //CLIENTE
