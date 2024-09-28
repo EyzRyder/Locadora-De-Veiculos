@@ -8,8 +8,8 @@ import util.ModoExibir;
 
 import java.util.Scanner;
 
-public class MenuManutencaoAgencia {
-    public static ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
+public class MenuManutencaoAgencia implements Menu {
+    public ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
 

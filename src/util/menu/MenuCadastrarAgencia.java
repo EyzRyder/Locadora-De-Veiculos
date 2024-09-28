@@ -8,9 +8,9 @@ import util.ModoExibir;
 
 import java.util.Scanner;
 
-public class MenuCadastrarAgencia {
+public class MenuCadastrarAgencia implements Menu {
 
-    public static ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
+    public ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
 

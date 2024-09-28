@@ -6,8 +6,8 @@ import util.ModoExibir;
 
 import java.util.Scanner;
 
-public class MenuCliente {
-    public static ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
+public class MenuCliente implements Menu {
+    public ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
 

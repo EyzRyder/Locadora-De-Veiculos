@@ -6,9 +6,9 @@ import util.ModoExibir;
 
 import java.util.Scanner;
 
-public class MenuAdmin {
+public class MenuAdmin implements Menu {
 
-    public static ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
+    public ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
 
