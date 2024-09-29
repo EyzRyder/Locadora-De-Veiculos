@@ -15,7 +15,7 @@ public class MenuAdmin implements Menu {
 
         do {
             if (repositorioController.usuarioAtual != null) {
-                menuPrompt += String.format("User: %s", repositorioController.usuarioAtual.getNome());
+                menuPrompt += String.format("User: %s%n", repositorioController.usuarioAtual.getNome());
             }
             menuPrompt += """
                     ╔══════════════════════════════════════════════╗
