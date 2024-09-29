@@ -39,7 +39,7 @@ public class MenuCadastrarVeiculo implements Menu {
                 case 3:
                     return VeiculoController.cadastrarVeiculo(repositorioController, TipoVeiculo.CAMINHAO);
                 case 0:
-                    return ModoExibir.CADASTRARVEICULO;
+                    return ModoExibir.MENUMANUTENCAOVEICULO;
                 default:
                     System.out.println("Opção inválida.");
             }

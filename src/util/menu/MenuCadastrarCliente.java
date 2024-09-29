@@ -40,7 +40,7 @@ public class MenuCadastrarCliente implements Menu {
                 case 3:
                     return ClienteController.cadastrarCliente(repositorioController, TipoCliente.ADMIN);
                 case 0:
-                    return ModoExibir.CADASTRARCLIENTE;
+                    return ModoExibir.MENUMANUTENCAOCLIENTE;
                 default:
                     System.out.println("Opção inválida.");
             }

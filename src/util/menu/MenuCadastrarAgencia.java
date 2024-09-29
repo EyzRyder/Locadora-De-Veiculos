@@ -41,7 +41,7 @@ public class MenuCadastrarAgencia implements Menu {
                 case 3:
                     return AgenciaController.cadastrarAgencia(repositorioController, TipoAgencia.GRANDE_PORTE);
                 case 0:
-                    return ModoExibir.CADASTRARAGENCIA;
+                    return ModoExibir.MENUMANUTENCAOAGENCIA;
                 default:
                     System.out.println("Opção inválida.");
             }
