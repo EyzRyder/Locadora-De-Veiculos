@@ -21,17 +21,6 @@ Cliente <|-- ClientePF
 Cliente <|-- ClientePJ
 Cliente <|-- Admin
 
-Agencia: # String cnpj
-Agencia: # String razaoSocial
-Agencia: # String nomeFantasia
-Agencia: # int tamanhoMaximoDaFrota
-Agencia: - static final long serialVersionUID
-Agencia: + String getCnpj()
-Agencia: + String getRazaoSocial()
-Agencia: + String getNomeFantasia()
-Agencia: + void setRazaoSocial(String razaoSocial)
-Agencia: + void setNomeFantasia(String nome)
-
 Veiculo: - String modelo
 Veiculo: - String placa
 Veiculo: - int ano
@@ -61,6 +50,30 @@ Caminhao: - int numeroDeEixos
 Veiculo <|-- Carro
 Veiculo <|-- Moto
 Veiculo <|-- Caminhao
+
+Agencia: # String cnpj
+Agencia: # String razaoSocial
+Agencia: # String nomeFantasia
+Agencia: # int tamanhoMaximoDaFrota
+Agencia: - static final long serialVersionUID
+Agencia: + String getCnpj()
+Agencia: + String getRazaoSocial()
+Agencia: + String getNomeFantasia()
+Agencia: + void setRazaoSocial(String razaoSocial)
+Agencia: + void setNomeFantasia(String nome)
+
+Movimentacao: final - LocalDateTime dataHoraMovimentacao
+Movimentacao: final - TipoMovimentacao tipoMovimentacao
+Movimentacao: final - String descricao
+Movimentacao: final - String emailClientew
+Movimentacao: final - String cnpjAgencia
+Movimentacao: final - String placaVeiculo
+Movimentacao: + LocalDateTime getDataHoraMovimentacao() 
+Movimentacao: + TipoMovimentacao getTipoMovimentacao() 
+Movimentacao: + String getDescricao() 
+Movimentacao: + String getEmailCliente() 
+Movimentacao: + String getCnpjAgencia() 
+Movimentacao: +  String getPlacaVeiculo() 
 
 ```
 
