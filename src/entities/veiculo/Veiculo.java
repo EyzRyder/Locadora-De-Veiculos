@@ -1,6 +1,12 @@
 package entities.veiculo;
 
-public class Veiculo {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class Veiculo  implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private String modelo;
     private String placa;
