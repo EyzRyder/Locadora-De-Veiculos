@@ -34,13 +34,14 @@ public class RepositorioController {
 
         Agencia agenciaPricipal = new Agencia("80.968.812/0001-64", "Santader Locadora Ltda", "Santader Locadora");
         agencias.add(agenciaPricipal);
+
         Veiculo carro1 = new Carro("Fiat Movi", "MOBI", 2024, "Vermelho", agenciaPricipal.getCnpj(), 4);
         veiculos.add(carro1);
-        Veiculo carro2 = new Carro("Fiat Uno", "DBZ-GT", 2024, "Vermelho", agenciaPricipal.getCnpj(), 4);
+        Veiculo carro2 = new Carro("Fiat Uno", "DBZ-GT", 1969, "Vermelho", agenciaPricipal.getCnpj(), 4);
         veiculos.add(carro2);
-        Veiculo moto = new Moto("Fiat Movi", "MOBI", 2024, "Vermelho", agenciaPricipal.getCnpj(), 2);
+        Veiculo moto = new Moto("Vespa", "FLCL", 2000, "Amarela", agenciaPricipal.getCnpj(), 2);
         veiculos.add(moto);
-        Veiculo caminhao = new Caminhao("Fiat Uno", "DBZ-GT", 2024, "Vermelho", agenciaPricipal.getCnpj(), 10, 10);
+        Veiculo caminhao = new Caminhao("Mack do Relampago Marquines", "95", 2006, "Vermelho", agenciaPricipal.getCnpj(), 10, 10);
         veiculos.add(caminhao);
     }
 
