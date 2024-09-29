@@ -18,14 +18,14 @@ public class VeiculoController {
         int ano;
         String cor;
         Veiculo veiculo;
+
         int agenciaIndex;
         String agenciaListPrompt = "";
         List<Integer> agenciaIndexList = new ArrayList<>();
-        List<Agencia> agenciaList = repositorioController.agencias.listAgencias();
-        int quantidadeAgencias = agenciaList.size();
+
         Scanner scanner = new Scanner(System.in);
 
-        if (quantidadeAgencias < 1) {
+        if (repositorioController.agencias.quantidadeAgencias() < 1) {
             System.err.println("Não tem agencia cadastrada para colocar o veiculo, volte quando tiver alguma agencia cadastrada\nAperte Enter pra continuar");
             scanner.nextLine();
             return ModoExibir.ADMIN;
@@ -36,20 +36,10 @@ public class VeiculoController {
         ano = Input.getInt("Digite o ano:", scanner);
         cor = Input.getString("Digite o cor:", scanner);
 
-        agenciaListPrompt += """
-                    ╔══════════════════════════════════════════════╗
-                    ║        Selecione a agencia desejada...       ║
-                    ╚══════════════════════════════════════════════╝
-                    
-                """;
-        for (int i = 0; i < quantidadeAgencias; i++) {
-            Agencia agencia = agenciaList.get(i);
-            agenciaIndexList.add(i);
-            agenciaListPrompt += String.format("[%d] CNPJ: %s - Nome: %s %n", i, agencia.getCnpj(), agencia.getNomeFantasia());
-        }
+        agenciaListPrompt = repositorioController.agencias.promptListarAgencias(agenciaIndexList);
 
         agenciaIndex = Input.getInt(agenciaListPrompt, scanner, agenciaIndexList);
-        Agencia agenciaSelecionada = agenciaList.get(agenciaIndex);
+        Agencia agenciaSelecionada = repositorioController.agencias.find(agenciaIndex);
 
         switch (tipoVeiculo) {
             case MOTO -> {
