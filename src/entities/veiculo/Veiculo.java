@@ -13,6 +13,17 @@ public class Veiculo  implements Serializable {
     private int ano;
     private String cor;
     private String agenciaCNPJ;
+    protected TipoVeiculo tipoVeiculo;
+    private boolean veiculoDisponivelParaLocacao = true;
+
+    public Veiculo(String modelo, String placa, int ano, String cor, String agenciaCNPJ, TipoVeiculo tipoVeiculo) {
+        this.modelo = modelo;
+        this.placa = placa;
+        this.ano = ano;
+        this.cor = cor;
+        this.agenciaCNPJ = agenciaCNPJ;
+        this.tipoVeiculo = tipoVeiculo;
+    }
 
     public Veiculo(String modelo, String placa, int ano, String cor, String agenciaCNPJ) {
         this.modelo = modelo;
@@ -22,7 +33,12 @@ public class Veiculo  implements Serializable {
         this.agenciaCNPJ = agenciaCNPJ;
     }
 
+    public boolean isDisponivel() {
+        return veiculoDisponivelParaLocacao;
+    }
+
     //get's
+
 
     public String getModelo() {
         return modelo;
@@ -43,6 +59,9 @@ public class Veiculo  implements Serializable {
     public String getAgenciaCNPJ() {
         return agenciaCNPJ;
     }
+
+    public TipoVeiculo getTipoVeiculo() {return tipoVeiculo; }
+
 
     //set's
 
@@ -65,4 +84,7 @@ public class Veiculo  implements Serializable {
     public void setAgenciaCNPJ(String agenciaCNPJ) {
         this.agenciaCNPJ = agenciaCNPJ;
     }
+
+    public void setDisponivel(boolean veiculoDisponivelParaLocacao) { this.veiculoDisponivelParaLocacao = veiculoDisponivelParaLocacao; }
+
 }
