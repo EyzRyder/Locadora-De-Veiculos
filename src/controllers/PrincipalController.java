@@ -21,13 +21,13 @@ public class PrincipalController {
         cliente = repositorioController.clientes.find(email);
 
         if (cliente == null ) {
-            System.err.println("Não exite usuario com esse email");
+            System.err.println("Não exite usuario com esse email\nAperte enter pra continuar");
             scanner.nextLine();
             return ModoExibir.PRINCIPAL;
         }
 
         if (!cliente.verificarSenha(senha)) {
-            System.err.println("Senha incorreta");
+            System.err.println("Senha incorreta\\nAperte enter pra continuar");
             scanner.nextLine();
             return ModoExibir.PRINCIPAL;
         }
@@ -40,6 +40,6 @@ public class PrincipalController {
             }
         }
 
-        return ModoExibir.PRINCIPAL; // TODO colocar menu Cliente
+        return ModoExibir.CLIENTE;
     }
 }

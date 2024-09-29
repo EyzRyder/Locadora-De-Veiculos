@@ -31,7 +31,7 @@ public class AgenciaController {
 
     }
 
-    public static ModoExibir alterarAgencia(RepositorioController repositorioController)  {
+    public static ModoExibir alterarAgencia(RepositorioController repositorioController) {
 
         String cnpj;
         String razaoSocial;
@@ -60,9 +60,9 @@ public class AgenciaController {
     }
 
     public static ModoExibir listarAgencias(RepositorioController repositorioController) {
-        List<Agencia> agencias =  repositorioController.agencias.listAgencias();
-        for (Agencia agencia : agencias){
-            System.out.printf("Nome: %s, Razao Social: %s %n",agencia.getNomeFantasia(),agencia.getRazaoSocial());
+        List<Agencia> agencias = repositorioController.agencias.listAgencias();
+        for (Agencia agencia : agencias) {
+            System.out.printf("CNPJ: %s, Nome: %s, Razao Social: %s %n", agencia.getCnpj(),agencia.getNomeFantasia(), agencia.getRazaoSocial());
         }
         return ModoExibir.ADMIN;
     }

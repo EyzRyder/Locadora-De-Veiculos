@@ -1,12 +1,12 @@
 package entities.veiculo;
 
-public class Caminhao extends Veiculo{
+public class Caminhao extends Veiculo {
 
     private int capacidadeDeCarga; // Em toneladas.
     private int numeroDeEixos;
 
-    public Caminhao (String modelo, String placa, int ano, String cor,String agenciaCNPJ, int capacidadeDeCarga, int numeroDeEixos){
-        super(modelo, placa, ano, cor,agenciaCNPJ);
+    public Caminhao(String modelo, String placa, int ano, String cor, String agenciaCNPJ, int capacidadeDeCarga, int numeroDeEixos) {
+        super(modelo, placa, ano, cor, agenciaCNPJ);
         this.capacidadeDeCarga = capacidadeDeCarga;
         this.numeroDeEixos = numeroDeEixos;
     }
@@ -30,7 +30,7 @@ public class Caminhao extends Veiculo{
     @Override
     public String toString() {
         return "Caminhao{" + "Capacidade de Carga = " + capacidadeDeCarga +
-                             "toneladas, Numero de Eixos = " + numeroDeEixos +'}';
+                "toneladas, Numero de Eixos = " + numeroDeEixos + '}';
     }
 
 

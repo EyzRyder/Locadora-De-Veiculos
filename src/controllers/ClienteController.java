@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ClienteController {
 
-    public static ModoExibir cadastrarCliente( RepositorioController repositorioController, TipoCliente tipoCliente) {
+    public static ModoExibir cadastrarCliente(RepositorioController repositorioController, TipoCliente tipoCliente) {
 
         String nome;
         String telefone;
@@ -73,9 +73,9 @@ public class ClienteController {
     }
 
     public static ModoExibir listarClientes(RepositorioController repositorioController) {
-        Collection<Cliente> clientes =  repositorioController.clientes.getAll();
-        for (Cliente cliente : clientes){
-            System.out.printf("Nome: %s, Email: %s, Telephone: %s %n",cliente.getNome(),cliente.getEmail(),cliente.getTelefone());
+        Collection<Cliente> clientes = repositorioController.clientes.getAll();
+        for (Cliente cliente : clientes) {
+            System.out.printf("Nome: %s, Email: %s, Telephone: %s %n", cliente.getNome(), cliente.getEmail(), cliente.getTelefone());
         }
         return ModoExibir.ADMIN;
     }

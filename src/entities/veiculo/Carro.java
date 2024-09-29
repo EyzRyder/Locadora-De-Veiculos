@@ -19,8 +19,8 @@ public class Carro extends Veiculo {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Carro{" + "Capacidade do Portamalas = " + capacidadeDoPortaMalas +
-                          "Capacidade de Pessoas = " + capacidadeDePessoas +'}';
+                "Capacidade de Pessoas = " + capacidadeDePessoas + '}';
     }
 }

@@ -20,12 +20,12 @@ public class VeiculoController {
         Veiculo veiculo;
         int agenciaIndex;
         String agenciaListPrompt = "";
-        List<Integer> agenciaIndexList =  new ArrayList<>();
+        List<Integer> agenciaIndexList = new ArrayList<>();
         List<Agencia> agenciaList = repositorioController.agencias.listAgencias();
-        int quantidadeAgencias=agenciaList.size();
+        int quantidadeAgencias = agenciaList.size();
         Scanner scanner = new Scanner(System.in);
 
-        if(quantidadeAgencias<1){
+        if (quantidadeAgencias < 1) {
             System.err.println("Não tem agencia cadastrada para colocar o veiculo, volte quando tiver alguma agencia cadastrada\nAperte Enter pra continuar");
             scanner.nextLine();
             return ModoExibir.ADMIN;
@@ -41,19 +41,19 @@ public class VeiculoController {
                     ║        Selecione a agencia desejada...       ║
                     ╚══════════════════════════════════════════════╝
                 """;
-        for(int i = 0; i<quantidadeAgencias ;i++){
+        for (int i = 0; i < quantidadeAgencias; i++) {
             Agencia agencia = agenciaList.get(i);
             agenciaIndexList.add(i);
-            agenciaListPrompt = String.format("[%d] CNPJ: %s - Nome: %s %n",i,agencia.getCnpj(),agencia.getNomeFantasia());
+            agenciaListPrompt = String.format("[%d] CNPJ: %s - Nome: %s %n", i, agencia.getCnpj(), agencia.getNomeFantasia());
         }
 
-        agenciaIndex = Input.getInt(agenciaListPrompt,scanner,agenciaIndexList);
+        agenciaIndex = Input.getInt(agenciaListPrompt, scanner, agenciaIndexList);
         Agencia agenciaSelecionada = agenciaList.get(agenciaIndex);
 
         switch (tipoVeiculo) {
             case MOTO -> {
                 int cilindradas = Input.getInt("Digite quantos cilindros:", scanner);
-                veiculo = new Moto(modelo, placa, ano, cor,agenciaSelecionada.getCnpj(), cilindradas);
+                veiculo = new Moto(modelo, placa, ano, cor, agenciaSelecionada.getCnpj(), cilindradas);
             }
             case CARRO -> {
                 int capacidadeDoPortamalas = Input.getInt("Digite a capacidade do porta-malas:", scanner);
@@ -79,7 +79,7 @@ public class VeiculoController {
     public static ModoExibir listarVeiculo(RepositorioController repositorioController) {
         List<Veiculo> veiculos = repositorioController.veiculos.listVeiculos();
         for (Veiculo veiculo : veiculos) {
-            System.out.printf("Placa: %s, Modelo: %s, Ano: %d, Cor: %s, CNPJ da Agencia: %s  %n", veiculo.getPlaca(), veiculo.getModelo(), veiculo.getAno(), veiculo.getCor(),veiculo.getAgenciaCNPJ());
+            System.out.printf("Placa: %s, Modelo: %s, Ano: %d, Cor: %s, CNPJ da Agencia: %s  %n", veiculo.getPlaca(), veiculo.getModelo(), veiculo.getAno(), veiculo.getCor(), veiculo.getAgenciaCNPJ());
         }
         return ModoExibir.ADMIN;
     }

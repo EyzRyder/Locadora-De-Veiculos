@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AgenciaRepositorio implements Repositorio<Agencia>{
+public class AgenciaRepositorio implements Repositorio<Agencia> {
 
     private final List<Agencia> agencias;
     private final String arquivo = "agencias.dat";

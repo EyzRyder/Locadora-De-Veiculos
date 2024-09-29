@@ -8,7 +8,7 @@ public class Veiculo {
     private String cor;
     private String agenciaCNPJ;
 
-    public Veiculo (String modelo, String placa, int ano, String cor,String agenciaCNPJ) {
+    public Veiculo(String modelo, String placa, int ano, String cor, String agenciaCNPJ) {
         this.modelo = modelo;
         this.placa = placa;
         this.ano = ano;

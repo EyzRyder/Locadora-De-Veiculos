@@ -24,6 +24,7 @@ public class Input {
 
         return value;
     }
+
     public static int getInt(String promptMessage, Scanner scanner, List<Integer> numbers) {
 
         Integer value = null;
@@ -48,10 +49,10 @@ public class Input {
 
     public static double getDouble(String promptMessage, Scanner scanner) {
         Double value = null;
-        System.out.println(promptMessage);
 
         while (value == null) {
             try {
+                System.out.println(promptMessage);
                 System.out.print(">> Input: ");
                 value = Double.parseDouble(scanner.nextLine());
                 System.out.println();
@@ -69,19 +70,23 @@ public class Input {
     public static boolean getBoolen(String promptMessage, Scanner scanner) {
         String input = null;
         Boolean value = null;
-        System.out.println(promptMessage);
 
         while (value == null) {
             try {
+                System.out.println(promptMessage);
                 System.out.print(">> Input(S/N): ");
                 input = scanner.nextLine();
 
-                if(input.equalsIgnoreCase("S")){ value=true; }
-                else if(input.equalsIgnoreCase("N")){value=false;}
-                else { throw new RuntimeException("Por favor digite S pra sim ou N pra não.");}
+                if (input.equalsIgnoreCase("S")) {
+                    value = true;
+                } else if (input.equalsIgnoreCase("N")) {
+                    value = false;
+                } else {
+                    throw new RuntimeException("Por favor digite S pra sim ou N pra não.");
+                }
                 System.out.println();
             } catch (RuntimeException ex) {
-                System.err.println("Input Invalid! "+ex);
+                System.err.println("Input Invalid! " + ex);
                 System.out.println("Aperte enter pra continuar");
                 scanner.nextLine();
             }
