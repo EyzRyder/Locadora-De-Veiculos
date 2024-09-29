@@ -5,8 +5,58 @@ Criar uma aplicação que gerencie o aluguel de veículos, onde cada item abaixo
 ## Diagrama de Classe
 ```mermaid
 classDiagram
+Cliente: # String nome
+Cliente: # String email
+Cliente: # String senha
+Cliente: + String getEmail()
+Cliente: + String getNome()
+Cliente: + void setNome(String nome)
+Cliente: + boolean verificarSenha(String senha)
+
+ClientePJ: - String cnpj
+ClientePF: - String cpf
+Admin: - String cargo
+
 Cliente <|-- ClientePF
 Cliente <|-- ClientePJ
+Cliente <|-- Admin
+
+Agencia: # String cnpj
+Agencia: # String razaoSocial
+Agencia: # String nomeFantasia
+Agencia: # int tamanhoMaximoDaFrota
+Agencia: - static final long serialVersionUID
+Agencia: + String getCnpj()
+Agencia: + String getRazaoSocial()
+Agencia: + String getNomeFantasia()
+Agencia: + void setRazaoSocial(String razaoSocial)
+Agencia: + void setNomeFantasia(String nome)
+
+Veiculo: - String modelo
+Veiculo: - String placa
+Veiculo: - int ano
+Veiculo: - String cors
+Veiculo: - String agenciaCNPJ
+Veiculo: + String getModelo() 
+Veiculo: + String getPlaca() 
+Veiculo: + int getAno() 
+Veiculo: + String getCor() 
+Veiculo: + String getAgenciaCNPJ() 
+Veiculo: + void setModelo(String modelo)
+Veiculo: + void setPlaca(String placa)
+Veiculo: + void setAno(int ano)
+Veiculo: + void setCor(String cor)
+Veiculo: + void setAgenciaCNPJ(String agenciaCNPJ) 
+
+Carro: - int capacidadeDePessoas
+Carro: - int capacidadeDoPortaMalas
+
+Moto: - int cilindradas
+Moto: + int getCilindradas() 
+Moto: + void setCilindradas(int cilindradas)
+
+Caminhao: - int capacidadeDeCarga
+Caminhao: - int numeroDeEixos
 
 Veiculo <|-- Carro
 Veiculo <|-- Moto
@@ -16,14 +66,14 @@ Veiculo <|-- Caminhao
 
 ## Itens obrigatórios
 
-- [ ] Cadastrar os veículos;
+- [x] Cadastrar os veículos;
 - [ ] Alterar um veículo cadastrado;
-- [ ] Buscar um veículo por parte do nome;
-- [ ] Cadastrar a agência onde o veículo será alugado/devolvido;
-- [ ] Alterar a agência onde o veículo será alugado/devolvido;
-- [ ] Buscar uma agência por parte do nome ou do logradouro do endereço;
-- [ ] Cadastrar o cliente (pessoa fisica/juridica)
-- [ ] Alterar o cliente (pessoa fisica/juridica)
+- [x] Buscar um veículo por parte do nome;
+- [x] Cadastrar a agência onde o veículo será alugado/devolvido;
+- [x] Alterar a agência onde o veículo será alugado/devolvido;
+- [x] Buscar uma agência por parte do nome ou do logradouro do endereço;
+- [x] Cadastrar o cliente (pessoa fisica/juridica)
+- [x] Alterar o cliente (pessoa fisica/juridica)
 - [ ] Alugar um veículo para pessoa fisica;
 - [ ] Alugar um veículo para pessoa juridica;
 - [ ] Devolver um veículo para pessoa fisica;
@@ -33,18 +83,18 @@ Veiculo <|-- Caminhao
 
 ## Itens bônus
 
-- [ ] Paginar as listas envolvidas;
+- [x] Paginar as listas envolvidas;
 - [ ] Dados sendo gravados em arquivos, simulando uma base de dados;
 
 ## Regras de negócio
 
 > [!IMPORTANT]
-> - [ ] RN1: Os veículos não podem ser repetidos;
-> - [ ] RN2: Tipos de veículos que serão considerados: Carro, Moto, Caminhões;
-> - [ ] RN3: Os aluguéis e devoluções terão o local, data e horario;
+> - [x] RN1: Os veículos não podem ser repetidos;
+> - [x] RN2: Tipos de veículos que serão considerados: Carro, Moto, Caminhões;
+> - [x] RN3: Os aluguéis e devoluções terão o local, data e horario;
 > - [ ] RN4: Os veículos que estiverem alugados não poderão estar disponíveis;
-> - [ ] RN5: Agências não podem estar duplicadas;
-> - [ ] RN6: Clientes não podem estar duplicados;
+> - [x] RN5: Agências não podem estar duplicadas;
+> - [x] RN6: Clientes não podem estar duplicados;
 > - [ ] RN7: Regras de devolução: 
 >    - Caso pessoa fisica tenha ficado com o carro mais que 5 dias terá direito a 5% de desconto. 
 >    - Caso pessoa juridica tenha ficado com o carro mais que 3 dias terá direito a 10% de desconto.
