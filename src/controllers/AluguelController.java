@@ -1,6 +1,8 @@
 package controllers;
 
 import entities.agencia.Agencia;
+import entities.movimentacao.Movimentacao;
+import entities.movimentacao.TipoMovimentacao;
 import entities.veiculo.Veiculo;
 import util.Input;
 import util.ModoExibir;
@@ -47,6 +49,13 @@ public class AluguelController {
         veiculoIndex = Input.getInt(veiculoListarPrompt, scanner, veiculoIndexList);
         Veiculo veiculoSelecionada = repositorioController.veiculos.find(veiculoIndex);
 
+        Movimentacao aluguelHistorico = new Movimentacao(
+                TipoMovimentacao.ALUGUEL, "Alugou um veiculo.",
+                repositorioController.getUsuarioAtual().getEmail(),
+                agenciaSelecionada.getCnpj(), veiculoSelecionada.getPlaca()
+        );
+        MovimentacaoController.inserirMovimentacao(repositorioController, aluguelHistorico);
+
         return ModoExibir.CLIENTE;
     }
 
@@ -57,6 +66,7 @@ public class AluguelController {
 
     //TODO
     public static ModoExibir consultarHistorico(RepositorioController repositorioController) {
+        MovimentacaoController.listarTodasMovimentacoes(repositorioController);
         return ModoExibir.CLIENTE;
     }
 }

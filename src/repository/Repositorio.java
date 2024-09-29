@@ -1,5 +1,7 @@
 package repository;
 
+import exception.ObjetoNaoAlteravelException;
+
 import java.io.*;
 import java.util.List;
 
@@ -7,7 +9,7 @@ public interface Repositorio<T> {
 
     T find(String key);
 
-    void update(T item);
+    void update(T item) throws ObjetoNaoAlteravelException;
 
     void add(T item);
 
