@@ -1,5 +1,6 @@
 package util.menu;
 
+import controllers.AluguelController;
 import controllers.RepositorioController;
 import util.Input;
 import util.ModoExibir;
@@ -34,11 +35,11 @@ public class MenuCliente implements Menu {
 
             switch (escolha) {
                 case 1:
-                    return ModoExibir.PRINCIPAL;
+                    return AluguelController.alugarVeiculo(repositorioController);
                 case 2:
-                    return ModoExibir.PRINCIPAL;
+                    return AluguelController.devolverVeiculo(repositorioController);
                 case 3:
-                    return ModoExibir.PRINCIPAL;
+                    return AluguelController.consultarHistorico(repositorioController);
                 case 0:
                     repositorioController.setUsuarioAtual(null);
                     return ModoExibir.PRINCIPAL;
