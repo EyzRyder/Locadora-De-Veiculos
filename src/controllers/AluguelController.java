@@ -50,10 +50,12 @@ public class AluguelController {
         return ModoExibir.CLIENTE;
     }
 
+    //TODO
     public static ModoExibir devolverVeiculo(RepositorioController repositorioController) {
         return ModoExibir.CLIENTE;
     }
 
+    //TODO
     public static ModoExibir consultarHistorico(RepositorioController repositorioController) {
         return ModoExibir.CLIENTE;
     }

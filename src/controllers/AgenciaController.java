@@ -69,23 +69,23 @@ public class AgenciaController {
 
     public static String promptListarAgencias(RepositorioController repositorioController, List<Integer> agenciaIndexList) {
         List<Agencia> agencias = repositorioController.agencias.listAgencias();
-        String prompt = "";
+        StringBuilder prompt = new StringBuilder();
 
-        prompt += """
+        prompt.append("""
                     ╔══════════════════════════════════════════════╗
                     ║        Selecione a agencia desejada...       ║
                     ╚══════════════════════════════════════════════╝
                     
-                """;
+                """);
 
         for (int i = 0; i < agencias.size(); i++) {
             Agencia agencia = agencias.get(i);
             agenciaIndexList.add(i);
-            prompt += String.format("[%d] CNPJ: %s - Nome: %s %n", i, agencia.getCnpj(), agencia.getNomeFantasia());
+            prompt.append(String.format("[%d] CNPJ: %s - Nome: %s %n", i, agencia.getCnpj(), agencia.getNomeFantasia()));
         }
-        prompt += "\n";
+        prompt.append("\n");
 
-        return prompt;
+        return prompt.toString();
     }
 
 }
