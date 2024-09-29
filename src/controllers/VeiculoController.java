@@ -36,15 +36,16 @@ public class VeiculoController {
         ano = Input.getInt("Digite o ano:", scanner);
         cor = Input.getString("Digite o cor:", scanner);
 
-        agenciaListPrompt = """
+        agenciaListPrompt += """
                     ╔══════════════════════════════════════════════╗
                     ║        Selecione a agencia desejada...       ║
                     ╚══════════════════════════════════════════════╝
+                    
                 """;
         for (int i = 0; i < quantidadeAgencias; i++) {
             Agencia agencia = agenciaList.get(i);
             agenciaIndexList.add(i);
-            agenciaListPrompt = String.format("[%d] CNPJ: %s - Nome: %s %n", i, agencia.getCnpj(), agencia.getNomeFantasia());
+            agenciaListPrompt += String.format("[%d] CNPJ: %s - Nome: %s %n", i, agencia.getCnpj(), agencia.getNomeFantasia());
         }
 
         agenciaIndex = Input.getInt(agenciaListPrompt, scanner, agenciaIndexList);
