@@ -67,4 +67,25 @@ public class AgenciaController {
         return ModoExibir.ADMIN;
     }
 
+    public static String promptListarAgencias(RepositorioController repositorioController, List<Integer> agenciaIndexList) {
+        List<Agencia> agencias = repositorioController.agencias.listAgencias();
+        String prompt = "";
+
+        prompt += """
+                    ╔══════════════════════════════════════════════╗
+                    ║        Selecione a agencia desejada...       ║
+                    ╚══════════════════════════════════════════════╝
+                    
+                """;
+
+        for (int i = 0; i < agencias.size(); i++) {
+            Agencia agencia = agencias.get(i);
+            agenciaIndexList.add(i);
+            prompt += String.format("[%d] CNPJ: %s - Nome: %s %n", i, agencia.getCnpj(), agencia.getNomeFantasia());
+        }
+        prompt += "\n";
+
+        return prompt;
+    }
+
 }

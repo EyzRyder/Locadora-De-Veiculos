@@ -36,7 +36,7 @@ public class VeiculoController {
         ano = Input.getInt("Digite o ano:", scanner);
         cor = Input.getString("Digite o cor:", scanner);
 
-        agenciaListPrompt = repositorioController.agencias.promptListarAgencias(agenciaIndexList);
+        agenciaListPrompt = AgenciaController.promptListarAgencias(repositorioController,agenciaIndexList);
 
         agenciaIndex = Input.getInt(agenciaListPrompt, scanner, agenciaIndexList);
         Agencia agenciaSelecionada = repositorioController.agencias.find(agenciaIndex);
@@ -74,4 +74,25 @@ public class VeiculoController {
         }
         return ModoExibir.ADMIN;
     }
+
+    public static String promptListarVeiculos(List<Veiculo> veiculos, List<Integer> agenciaIndexList) {
+        StringBuilder prompt = new StringBuilder();
+
+        prompt.append("""
+                    ╔══════════════════════════════════════════════╗
+                    ║        Selecione o veiculo desejada...       ║
+                    ╚══════════════════════════════════════════════╝
+                    
+                """);
+
+        for (int i = 0; i < veiculos.size(); i++) {
+            Veiculo veiculo = veiculos.get(i);
+            agenciaIndexList.add(i);
+            prompt.append(String.format(" [%d] Placa: %s, Modelo: %s, Ano: %d, Cor: %s, CNPJ da Agencia: %s  %n", i, veiculo.getPlaca(), veiculo.getModelo(), veiculo.getAno(), veiculo.getCor(), veiculo.getAgenciaCNPJ()));
+        }
+        prompt.append("\n");
+
+        return prompt.toString();
+    }
+
 }

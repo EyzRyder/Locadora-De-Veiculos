@@ -2,11 +2,11 @@ package repository;
 
 import entities.veiculo.Veiculo;
 
-import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class VeiculoRepositorio implements Repositorio<Veiculo> {
-    private ArrayList<Veiculo> veiculos;
+    private final List<Veiculo> veiculos;
     private final String arquivo = "veiculos.dat";
 
     public VeiculoRepositorio() {
@@ -22,7 +22,7 @@ public class VeiculoRepositorio implements Repositorio<Veiculo> {
         delete(veiculo);
     }
 
-    public ArrayList<Veiculo> listVeiculos() {
+    public List<Veiculo> listVeiculos() {
         return veiculos;
     }
 
@@ -32,6 +32,24 @@ public class VeiculoRepositorio implements Repositorio<Veiculo> {
 
     public void updateVeiculo(Veiculo veiculo) {
         update(veiculo);
+    }
+
+    public int quantidadeVeiculos() {
+        return veiculos.size();
+    }
+
+    public Veiculo find(int index) {
+        return veiculos.get(index);
+    }
+
+    public List<Veiculo> listarVeiculosPorCNPJAgencia(String cnpj){
+        List<Veiculo> veiculosFiltrado = new ArrayList<>();
+        for(Veiculo veiculo: veiculos){
+            if (veiculo.getAgenciaCNPJ().equalsIgnoreCase(cnpj)){
+                veiculosFiltrado.add(veiculo);
+            }
+        }
+        return veiculosFiltrado;
     }
 
     @Override

@@ -36,26 +36,6 @@ public class AgenciaRepositorio implements Repositorio<Agencia> {
         update(agenciaAtualizada);
     }
 
-    public String promptListarAgencias(List<Integer> agenciaIndexList) {
-        String prompt = "";
-
-        prompt += """
-                    ╔══════════════════════════════════════════════╗
-                    ║        Selecione a agencia desejada...       ║
-                    ╚══════════════════════════════════════════════╝
-                    
-                """;
-
-        for (int i = 0; i < agencias.size(); i++) {
-            Agencia agencia = agencias.get(i);
-            agenciaIndexList.add(i);
-            prompt += String.format("[%d] CNPJ: %s - Nome: %s %n", i, agencia.getCnpj(), agencia.getNomeFantasia());
-        }
-        prompt += "\n";
-
-        return prompt;
-    }
-
     public int quantidadeAgencias() {
         return agencias.size();
     }
