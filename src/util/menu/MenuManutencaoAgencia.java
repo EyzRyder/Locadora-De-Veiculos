@@ -12,9 +12,10 @@ public class MenuManutencaoAgencia implements Menu {
     public ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
+        String menuPrompt = "";
 
         do {
-            String menu = """
+            menuPrompt += """
                     ╔══════════════════════════════════════════════╗
                     ║                 MENU AGÊNCIA                 ║
                     ╠══════════════════════════════════════════════╣
@@ -28,12 +29,12 @@ public class MenuManutencaoAgencia implements Menu {
                     ╚══════════════════════════════════════════════╝
                     """;
 
-            escolha = Input.getInt(menu, scanner);
+            escolha = Input.getInt(menuPrompt, scanner);
 
             switch (escolha) {
                 case 1:
                     return AgenciaController.cadastrarAgencia(repositorioController, TipoAgencia.MEDIO_PORTE);
-                    //return ModoExibir.CADASTRARAGENCIA; // possivel futuro implementação
+                //return ModoExibir.CADASTRARAGENCIA; // possivel futuro implementação
                 case 2:
                     return AgenciaController.alterarAgencia(repositorioController);
                 case 3:

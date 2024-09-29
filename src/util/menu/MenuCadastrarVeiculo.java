@@ -12,9 +12,10 @@ public class MenuCadastrarVeiculo implements Menu {
     public ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
+        String menuPrompt = "";
 
         do {
-            String menu = """
+            menuPrompt += """
                     ╔══════════════════════════════════════════════╗
                     ║              Cadastrar Veículo               ║
                     ╠══════════════════════════════════════════════╣
@@ -28,7 +29,7 @@ public class MenuCadastrarVeiculo implements Menu {
                     ╚══════════════════════════════════════════════╝
                     """;
 
-            escolha = Input.getInt(menu, scanner);
+            escolha = Input.getInt(menuPrompt, scanner);
 
             switch (escolha) {
                 case 1:

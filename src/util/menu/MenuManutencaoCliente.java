@@ -11,10 +11,11 @@ public class MenuManutencaoCliente implements Menu {
     public ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
+        String menuPrompt = "";
 
         do {
 
-            String menu = """
+            menuPrompt += """
                     ╔══════════════════════════════════════════════╗
                     ║                 MENU CLIENTE                 ║
                     ║                 MENU ADMIN                   ║
@@ -29,7 +30,7 @@ public class MenuManutencaoCliente implements Menu {
                     ╚══════════════════════════════════════════════╝
                     """;
 
-            escolha = Input.getInt(menu, scanner);
+            escolha = Input.getInt(menuPrompt, scanner);
 
             switch (escolha) {
                 case 1:

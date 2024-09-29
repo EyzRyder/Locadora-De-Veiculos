@@ -11,9 +11,13 @@ public class MenuAdmin implements Menu {
     public ModoExibir exibirMenu(ModoExibir modo, RepositorioController repositorioController) {
         Scanner scanner = new Scanner(System.in);
         int escolha = -1;
+        String menuPrompt = "";
 
         do {
-            String menu = """
+            if (repositorioController.usuarioAtual != null) {
+                menuPrompt += String.format("User: %s", repositorioController.usuarioAtual.getNome());
+            }
+            menuPrompt += """
                     ╔══════════════════════════════════════════════╗
                     ║                 MENU ADMIN                   ║
                     ╠══════════════════════════════════════════════╣
@@ -27,7 +31,7 @@ public class MenuAdmin implements Menu {
                     ╚══════════════════════════════════════════════╝
                     """;
 
-            escolha = Input.getInt(menu, scanner);
+            escolha = Input.getInt(menuPrompt, scanner);
 
             switch (escolha) {
                 case 1:
