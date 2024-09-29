@@ -34,13 +34,40 @@ public class AgenciaRepositorio implements Repositorio<Agencia> {
 
     public void updateAgencia(Agencia agenciaAtualizada) {
         update(agenciaAtualizada);
+    }
 
+    public String promptListarAgencias(List<Integer> agenciaIndexList) {
+        String prompt = "";
+
+        prompt += """
+                    ╔══════════════════════════════════════════════╗
+                    ║        Selecione a agencia desejada...       ║
+                    ╚══════════════════════════════════════════════╝
+                    
+                """;
+
+        for (int i = 0; i < agencias.size(); i++) {
+            Agencia agencia = agencias.get(i);
+            agenciaIndexList.add(i);
+            prompt += String.format("[%d] CNPJ: %s - Nome: %s %n", i, agencia.getCnpj(), agencia.getNomeFantasia());
+        }
+        prompt += "\n";
+
+        return prompt;
+    }
+
+    public int quantidadeAgencias() {
+        return agencias.size();
+    }
+
+    public Agencia find(int index) {
+        return agencias.get(index);
     }
 
     @Override
-    public Agencia find(String key) {
+    public Agencia find(String cnpj) {
         for (Agencia agencia : agencias) {
-            if (agencia.getCnpj().equalsIgnoreCase(key)) {
+            if (agencia.getCnpj().equalsIgnoreCase(cnpj)) {
                 return agencia;
             }
         }
