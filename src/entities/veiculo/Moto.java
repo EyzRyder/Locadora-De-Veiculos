@@ -7,7 +7,9 @@ public class Moto extends Veiculo {
     public Moto(String modelo, String placa, int ano, String cor, String agenciaCNPJ, int cilindradas) {
         super(modelo, placa, ano, cor, agenciaCNPJ);
         this.cilindradas = cilindradas;
+        this.tipoVeiculo = TipoVeiculo.MOTO;
     }
+
 
     public int getCilindradas() {
         return cilindradas;

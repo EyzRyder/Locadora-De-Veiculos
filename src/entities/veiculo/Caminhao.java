@@ -9,6 +9,7 @@ public class Caminhao extends Veiculo {
         super(modelo, placa, ano, cor, agenciaCNPJ);
         this.capacidadeDeCarga = capacidadeDeCarga;
         this.numeroDeEixos = numeroDeEixos;
+        this.tipoVeiculo = TipoVeiculo.CAMINHAO;
     }
 
     public int getCapacidadeDeCarga() {
