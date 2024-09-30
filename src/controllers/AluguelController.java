@@ -128,8 +128,14 @@ public class AluguelController {
         return ModoExibir.CLIENTE;
     }
 
-    public static ModoExibir consultarHistorico(RepositorioController repositorioController) {
+    public static ModoExibir consultarTodoHistorico(RepositorioController repositorioController) {
         MovimentacaoController.listarTodasMovimentacoes(repositorioController);
+        return ModoExibir.CLIENTE;
+    }
+
+
+    public static ModoExibir consultarHistoricoCliente(RepositorioController repositorioController) {
+        MovimentacaoController.listarMovimentacoesCliente(repositorioController);
         return ModoExibir.CLIENTE;
     }
 }

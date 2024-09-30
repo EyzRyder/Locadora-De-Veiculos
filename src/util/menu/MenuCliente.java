@@ -39,7 +39,7 @@ public class MenuCliente implements Menu {
                 case 2:
                     return AluguelController.devolverVeiculo(repositorioController);
                 case 3:
-                    return AluguelController.consultarHistorico(repositorioController);
+                    return AluguelController.consultarHistoricoCliente(repositorioController);
                 case 0:
                     repositorioController.setUsuarioAtual(null);
                     return ModoExibir.PRINCIPAL;

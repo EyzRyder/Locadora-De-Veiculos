@@ -35,4 +35,11 @@ public class MovimentacaoController {
         }
     }
 
+    public static void listarMovimentacoesCliente(RepositorioController repositorioController) {
+        List<Movimentacao> movimentacoes =  repositorioController.movimentacoes.getMovimentacoesPorAgencia(repositorioController.usuarioAtual.getEmail());
+        for (Movimentacao movimentacao : movimentacoes){
+            listarMovimentacao(movimentacao);
+        }
+    }
+
 }

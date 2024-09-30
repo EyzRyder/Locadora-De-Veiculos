@@ -41,6 +41,17 @@ public class MovimentacaoRepositorio implements Repositorio<Movimentacao> {
         return movimentacoes;
     }
 
+
+    public List<Movimentacao> getMovimentacoesPorEmailCliente(String email) {
+        List<Movimentacao> movimentacoes = new ArrayList<>();
+        for (Movimentacao movimentacao : this.movimentacoes) {
+            if (movimentacao.getEmailCliente().equals(email)) {
+                movimentacoes.add(movimentacao);
+            }
+        }
+        return movimentacoes;
+    }
+
     public List<Movimentacao> getMovimentacoesPorAgencia(String cnpjAgencia) {
         List<Movimentacao> movimentacoes = new ArrayList<>();
         for (Movimentacao movimentacao : this.movimentacoes) {
