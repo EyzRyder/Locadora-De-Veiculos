@@ -44,7 +44,7 @@ public class AgenciaController {
         agencia = repositorioController.agencias.findAgenciaByCNPJ(cnpj);
 
         if (agencia == null) {
-            System.err.println("Agencia não encontrado, Enter para continuar...");
+            System.err.println("Agencia não encontrada, Enter para continuar...");
             scanner.nextLine();
             return ModoExibir.ADMIN;
         } else {
@@ -62,7 +62,7 @@ public class AgenciaController {
     public static ModoExibir listarAgencias(RepositorioController repositorioController) {
         List<Agencia> agencias = repositorioController.agencias.listAgencias();
         for (Agencia agencia : agencias) {
-            System.out.printf("CNPJ: %s, Nome: %s, Razao Social: %s %n", agencia.getCnpj(),agencia.getNomeFantasia(), agencia.getRazaoSocial());
+            System.out.printf("CNPJ: %s, Nome: %s, Razao Social: %s %n", agencia.getCnpj(), agencia.getNomeFantasia(), agencia.getRazaoSocial());
         }
         return ModoExibir.ADMIN;
     }
@@ -88,4 +88,36 @@ public class AgenciaController {
         return prompt.toString();
     }
 
+    public static ModoExibir removerAgencia(RepositorioController repositorioController, List<Integer> agenciaIndexList) {
+        Scanner scanner = new Scanner(System.in);
+        String inputIndex = Input.getString("Digite o índice da agência a ser removida: ", scanner);
+
+        try {
+            int index = Integer.parseInt(inputIndex);
+
+            if (index < 0 || index >= agenciaIndexList.size()) {
+                System.err.println("Índice inválido. Operação cancelada.");
+                return ModoExibir.ADMIN;
+            }
+
+            Agencia agencia = repositorioController.agencias.listAgencias().get(agenciaIndexList.get(index));
+
+            System.out.println("Tem certeza que deseja remover a agência " + agencia.getNomeFantasia() + "? (S/N)");
+            String confirmacao = scanner.nextLine().toUpperCase();
+
+            if (confirmacao.equals("S")) {
+                repositorioController.removerAgencia(agencia);
+                System.out.println("Agência removida com sucesso.");
+            } else {
+                System.out.println("Remoção cancelada.");
+            }
+
+        } catch (NumberFormatException e) {
+            System.err.println("Entrada inválida. Por favor, insira um número.");
+        } catch (Exception e) {
+            System.err.println("Erro ao remover agência: " + e.getMessage());
+        }
+
+        return ModoExibir.ADMIN;
+    }
 }

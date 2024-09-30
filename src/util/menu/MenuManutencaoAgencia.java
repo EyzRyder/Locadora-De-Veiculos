@@ -22,6 +22,7 @@ public class MenuManutencaoAgencia implements Menu {
                     ║  [1] ⇨ Cadastrar Agencia                     ║
                     ║  [2] ⇨ Alterar dados da Agencia              ║
                     ║  [3] ⇨ Listar Agencias                       ║
+                    ║  [4] ⇨ Remover Agencia                       ║
                     ║  [0] ⇨ Voltar                                ║
                     ╚══════════════════════════════════════════════╝
                     ╔══════════════════════════════════════════════╗

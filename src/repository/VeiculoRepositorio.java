@@ -65,7 +65,7 @@ public class VeiculoRepositorio implements Repositorio<Veiculo> {
     //TODO fazer o updateVeiculo
     @Override
     public void update(Veiculo veiculo) {
-
+        saveData(arquivo, veiculos);
     }
 
     @Override

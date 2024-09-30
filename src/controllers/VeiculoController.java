@@ -36,7 +36,7 @@ public class VeiculoController {
         ano = Input.getInt("Digite o ano:", scanner);
         cor = Input.getString("Digite o cor:", scanner);
 
-        agenciaListPrompt = AgenciaController.promptListarAgencias(repositorioController,agenciaIndexList);
+        agenciaListPrompt = AgenciaController.promptListarAgencias(repositorioController, agenciaIndexList);
 
         agenciaIndex = Input.getInt(agenciaListPrompt, scanner, agenciaIndexList);
         Agencia agenciaSelecionada = repositorioController.agencias.find(agenciaIndex);
@@ -62,8 +62,65 @@ public class VeiculoController {
         return repositorioController.adicionarVeiculo(veiculo);
     }
 
-//TODO
     public static ModoExibir alterarVeiculo(RepositorioController repositorioController) {
+        Scanner scanner = new Scanner(System.in);
+        List<Integer> veiculoIndexList = new ArrayList<>();
+
+        if (repositorioController.veiculos.quantidadeVeiculos() < 1) {
+            System.err.println("Não há veículos cadastrados para alterar. Aperte Enter para continuar.");
+            scanner.nextLine();
+            return ModoExibir.ADMIN;
+        }
+
+        List<Veiculo> veiculos = repositorioController.veiculos.listVeiculos();
+        String veiculoListPrompt = promptListarVeiculos(veiculos, veiculoIndexList);
+        int veiculoIndex = Input.getInt(veiculoListPrompt, scanner, veiculoIndexList);
+        Veiculo veiculoSelecionado = repositorioController.veiculos.find(veiculoIndex);
+
+        System.out.printf("Você selecionou o veículo com a placa: %s, modelo: %s%n", veiculoSelecionado.getPlaca(), veiculoSelecionado.getModelo());
+
+        String novoModelo = Input.getString("Digite o novo modelo (atual: " + veiculoSelecionado.getModelo() + "):", scanner);
+        String novaPlaca = Input.getString("Digite a nova placa (atual: " + veiculoSelecionado.getPlaca() + "):", scanner);
+        int novoAno = Input.getInt("Digite o novo ano (atual: " + veiculoSelecionado.getAno() + "):", scanner);
+        String novaCor = Input.getString("Digite a nova cor (atual: " + veiculoSelecionado.getCor() + "):", scanner);
+
+        veiculoSelecionado.setModelo(novoModelo);
+        veiculoSelecionado.setPlaca(novaPlaca);
+        veiculoSelecionado.setAno(novoAno);
+        veiculoSelecionado.setCor(novaCor);
+
+        repositorioController.veiculos.updateVeiculo(veiculoSelecionado);
+        System.out.println("Veículo alterado com sucesso!");
+
+        return ModoExibir.ADMIN;
+    }
+
+    public static ModoExibir deletarVeiculo(RepositorioController repositorioController) {
+        Scanner scanner = new Scanner(System.in);
+        List<Integer> veiculoIndexList = new ArrayList<>();
+
+        if (repositorioController.veiculos.quantidadeVeiculos() < 1) {
+            System.err.println("Não há veículos cadastrados para deletar. Aperte Enter para continuar.");
+            scanner.nextLine();
+            return ModoExibir.ADMIN;
+        }
+
+        List<Veiculo> veiculos = repositorioController.veiculos.listVeiculos();
+        String veiculoListPrompt = promptListarVeiculos(veiculos, veiculoIndexList);
+        int veiculoIndex = Input.getInt(veiculoListPrompt, scanner, veiculoIndexList);
+        Veiculo veiculoSelecionado = repositorioController.veiculos.find(veiculoIndex);
+
+        System.out.printf("Você selecionou o veículo com a placa: %s, modelo: %s%n", veiculoSelecionado.getPlaca(), veiculoSelecionado.getModelo());
+
+        String confirmacao = Input.getString("Tem certeza que deseja deletar este veículo? Digite 'sim' para confirmar:", scanner);
+
+        if (confirmacao.equalsIgnoreCase("sim")) {
+            repositorioController.veiculos.dropVeiculo(veiculoSelecionado);
+            System.out.println("Veículo deletado com sucesso!");
+        } else {
+            System.out.println("Operação cancelada.");
+        }
+
         return ModoExibir.ADMIN;
     }
 
