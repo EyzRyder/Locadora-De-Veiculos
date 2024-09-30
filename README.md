@@ -87,12 +87,12 @@ Movimentacao: +  String getPlacaVeiculo()
 - [x] Buscar uma agência por parte do nome ou do logradouro do endereço;
 - [x] Cadastrar o cliente (pessoa fisica/juridica)
 - [x] Alterar o cliente (pessoa fisica/juridica)
-- [ ] Alugar um veículo para pessoa fisica;
-- [ ] Alugar um veículo para pessoa juridica;
-- [ ] Devolver um veículo para pessoa fisica;
-- [ ] Devolver um veículo para pessoa juridica;
-- [ ] Gerar um comprovante com todos os dados do aluguel (aberto para o grupo decidir o que vai ser demonstrado);
-- [ ] Gerar um comprovante com todos os dados da devolução (aberto para o grupo decidir o que vai ser demonstrado);
+- [x] Alugar um veículo para pessoa fisica;
+- [x] Alugar um veículo para pessoa juridica;
+- [x] Devolver um veículo para pessoa fisica;
+- [x] Devolver um veículo para pessoa juridica;
+- [x] Gerar um comprovante com todos os dados do aluguel (aberto para o grupo decidir o que vai ser demonstrado);
+- [x] Gerar um comprovante com todos os dados da devolução (aberto para o grupo decidir o que vai ser demonstrado);
 
 ## Itens bônus
 
@@ -105,10 +105,10 @@ Movimentacao: +  String getPlacaVeiculo()
 > - [x] RN1: Os veículos não podem ser repetidos;
 > - [x] RN2: Tipos de veículos que serão considerados: Carro, Moto, Caminhões;
 > - [x] RN3: Os aluguéis e devoluções terão o local, data e horario;
-> - [ ] RN4: Os veículos que estiverem alugados não poderão estar disponíveis;
+> - [x] RN4: Os veículos que estiverem alugados não poderão estar disponíveis;
 > - [x] RN5: Agências não podem estar duplicadas;
 > - [x] RN6: Clientes não podem estar duplicados;
-> - [ ] RN7: Regras de devolução: 
+> - [x] RN7: Regras de devolução: 
 >    - Caso pessoa fisica tenha ficado com o carro mais que 5 dias terá direito a 5% de desconto. 
 >    - Caso pessoa juridica tenha ficado com o carro mais que 3 dias terá direito a 10% de desconto.
 
