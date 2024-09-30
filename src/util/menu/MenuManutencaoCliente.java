@@ -18,7 +18,6 @@ public class MenuManutencaoCliente implements Menu {
             menuPrompt += """
                     ╔══════════════════════════════════════════════╗
                     ║                 MENU CLIENTE                 ║
-                    ║                 MENU ADMIN                   ║
                     ╠══════════════════════════════════════════════╣
                     ║  [1] ⇨ Cadastrar Cliente                     ║
                     ║  [2] ⇨ Alterar dados do Cliente              ║

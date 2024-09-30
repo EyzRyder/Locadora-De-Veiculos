@@ -21,6 +21,7 @@ public class MenuManutencaoVeiculo implements Menu {
                     ║  [1] ⇨ Cadastrar Veiculo                     ║
                     ║  [2] ⇨ Alterar dados da Veiculo              ║
                     ║  [3] ⇨ Listar Veiculos                       ║
+                    ║  [4] ⇨ Remover Veículo                       ║
                     ║  [0] ⇨ Voltar                                ║
                     ╚══════════════════════════════════════════════╝
                     ╔══════════════════════════════════════════════╗
@@ -37,6 +38,8 @@ public class MenuManutencaoVeiculo implements Menu {
                     return VeiculoController.alterarVeiculo(repositorioController);
                 case 3:
                     return VeiculoController.listarVeiculo(repositorioController);
+                case 4:
+                    return VeiculoController.deletarVeiculo(repositorioController);
                 case 0:
                     return ModoExibir.ADMIN;
                 default:

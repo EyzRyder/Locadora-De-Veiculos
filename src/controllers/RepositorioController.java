@@ -33,12 +33,13 @@ public class RepositorioController {
     }
 
     private void carregarDados() {
+        /*
         Cliente adm = new Admin("ADM", "(11)69504-6351", "adm@ada.com", "123muitoforte", "DEV");
         clientes.add(adm);
-
         Agencia agenciaPrincipal = new Agencia("80.968.812/0001-64", "Santader Locadora Ltda", "Santader Locadora");
         agencias.add(agenciaPrincipal);
-
+         */
+        /*
         Veiculo carro1 = new Carro("Fiat Movi", "MOBI", 2024, "Vermelho", agenciaPrincipal.getCnpj(), 4);
         veiculos.add(carro1);
         Veiculo carro2 = new Carro("Fiat Uno", "DBZ-GT", 1969, "Vermelho", agenciaPrincipal.getCnpj(), 4);
@@ -47,6 +48,7 @@ public class RepositorioController {
         veiculos.add(moto);
         Veiculo caminhao = new Caminhao("Mack do Relampago Marquines", "95", 2006, "Vermelho", agenciaPrincipal.getCnpj(), 10, 10);
         veiculos.add(caminhao);
+        */
     }
 
     //CLIENTE
@@ -89,9 +91,17 @@ public class RepositorioController {
         return ModoExibir.ADMIN;
     }
 
-    public ModoExibir removerAgencia(Agencia agencia) throws ObjetoNaoEncontradoException {
-        agencias.dropAgencia(agencia);
-        System.out.println("Agência removida com sucesso.");
+    public ModoExibir removerAgencia(Agencia agencia) {
+        if (agencia == null || agencias.findAgenciaByCNPJ(agencia.getCnpj()) == null) {
+            System.out.println("Agência não encontrada.");
+            return ModoExibir.ADMIN;
+        }
+        try {
+            agencias.dropAgencia(agencia);
+            System.out.println("Agência removida com sucesso.");
+        } catch (ObjetoNaoEncontradoException e) {
+            System.out.println("Erro: Agência não encontrada para remoção.");
+        }
 
         return ModoExibir.ADMIN;
     }

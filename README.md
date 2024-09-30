@@ -80,7 +80,7 @@ Movimentacao: +  String getPlacaVeiculo()
 ## Itens obrigatórios
 
 - [x] Cadastrar os veículos;
-- [ ] Alterar um veículo cadastrado;
+- [x] Alterar um veículo cadastrado;
 - [x] Buscar um veículo por parte do nome;
 - [x] Cadastrar a agência onde o veículo será alugado/devolvido;
 - [x] Alterar a agência onde o veículo será alugado/devolvido;
@@ -97,7 +97,7 @@ Movimentacao: +  String getPlacaVeiculo()
 ## Itens bônus
 
 - [x] Paginar as listas envolvidas;
-- [ ] Dados sendo gravados em arquivos, simulando uma base de dados;
+- [x] Dados sendo gravados em arquivos, simulando uma base de dados;
 
 ## Regras de negócio
 
