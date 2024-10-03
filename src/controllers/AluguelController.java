@@ -1,6 +1,9 @@
 package controllers;
 
 import entities.agencia.Agencia;
+import entities.cliente.Cliente;
+import entities.cliente.ClientePF;
+import entities.cliente.ClientePJ;
 import entities.movimentacao.Movimentacao;
 import entities.movimentacao.TipoMovimentacao;
 import entities.veiculo.Veiculo;
@@ -74,6 +77,8 @@ public class AluguelController {
 
     public static ModoExibir devolverVeiculo(RepositorioController repositorioController) {
 
+        Cliente clienteDevolucao = repositorioController.getUsuarioAtual();
+
         int agenciaIndex;
         String agenciaListPrompt = "";
         List<Integer> agenciaIndexList = new ArrayList<>();
@@ -109,8 +114,10 @@ public class AluguelController {
         double valorTotal = diasAlugados * veiculoSelecionado.getTipoVeiculo().getValorDiaria();
         double desconto = 0;
 
-        if (diasAlugados > 5 && veiculoSelecionado.getTipoVeiculo() != TipoVeiculo.CAMINHAO) {
+        if (diasAlugados > 5 && clienteDevolucao instanceof ClientePF) {
             desconto = 0.05;
+        } else if (diasAlugados > 3 && clienteDevolucao instanceof ClientePJ) {
+            desconto = 0.1;
         }
 
         valorTotal -= valorTotal * desconto;
@@ -118,7 +125,7 @@ public class AluguelController {
         veiculoSelecionado.setDisponivel(true);
         Movimentacao devolucaoHistorico = new Movimentacao(
                 TipoMovimentacao.DEVOLUCAO, "Devolveu um veículo.",
-                repositorioController.getUsuarioAtual().getEmail(),
+                clienteDevolucao.getEmail(),
                 agenciaSelecionada.getCnpj(), veiculoSelecionado.getPlaca()
         );
         MovimentacaoController.inserirMovimentacao(repositorioController, devolucaoHistorico);
