@@ -1,9 +1,11 @@
 package repository;
 
+import entities.cliente.Cliente;
 import entities.movimentacao.Movimentacao;
 import exception.ObjetoNaoAlteravelException;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class MovimentacaoRepositorio implements Repositorio<Movimentacao> {
@@ -14,6 +16,10 @@ public class MovimentacaoRepositorio implements Repositorio<Movimentacao> {
     public MovimentacaoRepositorio() {
         movimentacoes = new ArrayList<>();
         loadData(arquivo, movimentacoes);
+    }
+
+    public Collection<Movimentacao> getAll() {
+        return movimentacoes;
     }
 
     @Override

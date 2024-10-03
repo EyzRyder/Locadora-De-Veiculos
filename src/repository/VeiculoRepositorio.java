@@ -1,8 +1,10 @@
 package repository;
 
+import entities.cliente.Cliente;
 import entities.veiculo.Veiculo;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class VeiculoRepositorio implements Repositorio<Veiculo> {
@@ -12,6 +14,10 @@ public class VeiculoRepositorio implements Repositorio<Veiculo> {
     public VeiculoRepositorio() {
         veiculos = new ArrayList<>();
         loadData(arquivo, veiculos);
+    }
+
+    public Collection<Veiculo> getAll() {
+        return veiculos;
     }
 
     public void addVeiculo(Veiculo veiculo) {
