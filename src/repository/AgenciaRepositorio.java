@@ -1,9 +1,11 @@
 package repository;
 
 import entities.agencia.Agencia;
+import entities.cliente.Cliente;
 import exception.ObjetoNaoEncontradoException;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class AgenciaRepositorio implements Repositorio<Agencia> {
@@ -14,6 +16,10 @@ public class AgenciaRepositorio implements Repositorio<Agencia> {
     public AgenciaRepositorio() {
         this.agencias = new ArrayList<>();
         loadData(arquivo, agencias);
+    }
+
+    public Collection<Agencia> getAll() {
+        return agencias;
     }
 
     public void addAgencia(Agencia agencia) {

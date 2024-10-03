@@ -33,23 +33,34 @@ public class RepositorioController {
     }
 
     private void carregarDados() {
-        /*
-        Cliente adm = new Admin("ADM", "(11)69504-6351", "adm@ada.com", "123muitoforte", "DEV");
-        clientes.add(adm);
-        Agencia agenciaPrincipal = new Agencia("80.968.812/0001-64", "Santader Locadora Ltda", "Santader Locadora");
-        agencias.add(agenciaPrincipal);
-         */
-        /*
-        Veiculo carro1 = new Carro("Fiat Movi", "MOBI", 2024, "Vermelho", agenciaPrincipal.getCnpj(), 4);
-        veiculos.add(carro1);
-        Veiculo carro2 = new Carro("Fiat Uno", "DBZ-GT", 1969, "Vermelho", agenciaPrincipal.getCnpj(), 4);
-        veiculos.add(carro2);
-        Veiculo moto = new Moto("Vespa", "FLCL", 2000, "Amarela", agenciaPrincipal.getCnpj(), 2);
-        veiculos.add(moto);
-        Veiculo caminhao = new Caminhao("Mack do Relampago Marquines", "95", 2006, "Vermelho", agenciaPrincipal.getCnpj(), 10, 10);
-        veiculos.add(caminhao);
-        */
+        if (clientes.getAll().isEmpty()) {
+            Cliente adm = new Admin("ADM", "(11)69504-6351", "adm@ada.com", "123muitoforte", "DEV");
+            clientes.add(adm);
+        } else {
+            System.out.println("Dados de clientes já estão carregados.");
+        }
+
+        if (agencias.getAll().isEmpty()) {
+            Agencia agenciaPrincipal = new Agencia("80.968.812/0001-64", "Santader Locadora Ltda", "Santader Locadora");
+            agencias.add(agenciaPrincipal);
+        } else {
+            System.out.println("Dados de agências já estão carregados.");
+        }
+
+        if (veiculos.getAll().isEmpty()) {
+            Veiculo carro1 = new Carro("Fiat Movi", "MOBI", 2024, "Vermelho", "80.968.812/0001-64", 4);
+            veiculos.add(carro1);
+            Veiculo carro2 = new Carro("Fiat Uno", "DBZ-GT", 1969, "Vermelho", "80.968.812/0001-64", 4);
+            veiculos.add(carro2);
+            Veiculo moto = new Moto("Vespa", "FLCL", 2000, "Amarela", "80.968.812/0001-64", 2);
+            veiculos.add(moto);
+            Veiculo caminhao = new Caminhao("Mack do Relampago Marquines", "95", 2006, "Vermelho", "80.968.812/0001-64", 10, 10);
+            veiculos.add(caminhao);
+        } else {
+            System.out.println("Dados de veículos já estão carregados.");
+        }
     }
+
 
     //CLIENTE
 
